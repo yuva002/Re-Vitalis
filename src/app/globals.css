@@ -1,26 +1,88 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand tokens (from provided style guide) */
+  /* --ink: #202a2c; */
+  --ink: #cb9e21bc;
+  --slate: #828c8d;
+  --mist: #afc8cb;
+  --accent-blue: #3B82F6;
+  --white: #ffffff;
+
+  --background: var(--white);
+  --foreground: var(--ink);
+
+  /* Surface system */
+  --surface: color-mix(in oklab, var(--mist) 34%, var(--white));
+  --surface-2: color-mix(in oklab, var(--mist) 46%, var(--white));
+  --border: color-mix(in oklab, var(--ink) 14%, transparent);
+  --shadow: 0 30px 80px rgba(32, 42, 44, 0.18);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --color-slate: var(--slate);
+  --color-mist: var(--mist);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+
+  /* Typography: Agatho (display) + Century Gothic (body).
+     If Agatho isn't available yet, the display falls back to a refined serif. */
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: light;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--mist) 65%, transparent);
+  color: var(--ink);
+}
+
+/* Subtle premium grain (very low cost) */
+.grain {
+  position: relative;
+}
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+  opacity: 0.5;
+}
+
+/* Topographic contour texture (like the reference hero) */
+.hero-topo {
+  position: relative;
+}
+.hero-topo::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  opacity: 0.36;
+  mix-blend-mode: soft-light;
+  background-repeat: repeat;
+  background-size: 520px 520px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 520 520'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.55' stroke-width='1.2'%3E%3Cpath d='M-30 110 C 70 20, 160 220, 260 130 S 420 40, 560 120'/%3E%3Cpath d='M-40 165 C 75 85, 150 290, 270 195 S 420 105, 565 175'/%3E%3Cpath d='M-35 225 C 85 160, 135 350, 275 255 S 435 170, 565 235'/%3E%3Cpath d='M-25 285 C 85 255, 125 420, 285 335 S 445 250, 565 295'/%3E%3Cpath d='M-10 350 C 95 340, 140 490, 300 410 S 460 330, 565 360'/%3E%3Cpath d='M30 -10 C 120 50, 40 160, 150 220 S 310 260, 380 320 S 420 430, 540 470'/%3E%3Cpath d='M90 -20 C 170 30, 90 160, 200 210 S 330 250, 410 320 S 470 420, 560 455'/%3E%3Cpath d='M170 10 C 240 70, 150 170, 260 230 S 390 285, 470 360 S 520 460, 600 500'/%3E%3C/g%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.35' stroke-width='0.9'%3E%3Cpath d='M-60 60 C 70 -20, 170 150, 250 70 S 390 0, 580 90'/%3E%3Cpath d='M-55 410 C 80 330, 175 560, 320 455 S 470 390, 600 430'/%3E%3C/g%3E%3C/svg%3E");
+  filter: blur(0.2px);
 }
