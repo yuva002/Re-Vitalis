@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useScroll } from "motion/react";
 
@@ -134,7 +135,7 @@ export function HealthPlanSection() {
   const dashOffset = 1 - progress; // 1 -> hidden, 0 -> fully drawn
 
   return (
-    <section ref={outerRef} className="relative bg-white h-[380vh]">
+    <section ref={outerRef} className="relative h-[380vh]" style={{ zIndex: 1 }}>
       <div className="sticky top-0 h-screen overflow-hidden">
         <div className="pointer-events-none fixed inset-0">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_60%_at_30%_0%,rgba(59,130,246,0.10),transparent_60%),radial-gradient(70%_70%_at_100%_40%,rgba(59,130,246,0.08),transparent_55%)]" />
@@ -299,6 +300,14 @@ export function HealthPlanSection() {
             <p className="mx-auto max-w-[80ch] text-[15px] leading-[1.9] text-ink/90">
               This is not generic treatment. This is precision-guided recovery.
             </p>
+            <div className="pointer-events-auto mt-4">
+              <Link
+                href="/services/metabolic-programs"
+                className="inline-flex items-center rounded-full border border-border bg-white/75 px-5 py-2 text-[11px] tracking-[0.12em] text-ink hover:bg-white"
+              >
+                SEE FULL PROGRAM DETAILS
+              </Link>
+            </div>
           </div>
         </div>
       </div>

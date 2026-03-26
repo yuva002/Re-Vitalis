@@ -1,6 +1,7 @@
 "use client";
 
 import { Quote } from "lucide-react";
+import Link from "next/link";
 import { motion } from "motion/react";
 import {
   TestimonialsColumn,
@@ -86,7 +87,7 @@ const thirdColumn = testimonials.slice(7, 10);
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="relative overflow-hidden bg-white py-24 sm:py-28">
+    <section id="testimonials" className="relative overflow-hidden py-24 sm:py-28" style={{ zIndex: 1 }}>
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(90%_70%_at_20%_0%,rgba(59,130,246,0.10),transparent_65%),radial-gradient(70%_60%_at_100%_20%,rgba(59,130,246,0.08),transparent_60%)]" />
 
       <div className="relative z-10 mx-auto w-full max-w-[1480px] px-6 sm:px-10">
@@ -110,6 +111,12 @@ export function TestimonialsSection() {
           <p className="mt-4 max-w-[64ch] text-[15px] leading-[1.9] text-slate">
             Real outcomes from patients who chose a personalized metabolic recovery model.
           </p>
+          <Link
+            href="/about-doctor"
+            className="mt-5 inline-flex items-center rounded-full border border-border bg-white/80 px-5 py-2 text-[11px] tracking-[0.12em] text-ink hover:bg-white"
+          >
+            MEET THE DOCTOR
+          </Link>
         </motion.div>
 
         <div className="mt-12 flex justify-center gap-6 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_13%,black_87%,transparent)] max-h-[760px]">

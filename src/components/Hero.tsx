@@ -6,40 +6,6 @@ import { useCallback } from "react";
 import { NavBar } from "./NavBar";
 import heroImg from "../../public/hero-img.png";
 
-function ToothGlyph() {
-  return (
-    <svg
-      viewBox="0 0 240 240"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-full w-full"
-      aria-hidden="true"
-    >
-      <defs>
-        <linearGradient id="g1" x1="50" y1="20" x2="190" y2="220">
-          <stop stopColor="white" stopOpacity="0.95" />
-          <stop stopColor="#EAF3F4" stopOpacity="0.9" offset="1" />
-        </linearGradient>
-        <linearGradient id="g2" x1="90" y1="70" x2="150" y2="180">
-          <stop stopColor="#202A2C" stopOpacity="0.18" />
-          <stop stopColor="#202A2C" stopOpacity="0" offset="1" />
-        </linearGradient>
-      </defs>
-
-      <path
-        d="M120 26c44 0 80 34 80 77 0 23-8 44-20 60-11 15-12 41-18 60-5 16-16 23-29 23-10 0-16-5-13-25 3-20-5-30-20-30s-23 10-20 30c3 20-3 25-13 25-13 0-24-7-29-23-6-19-7-45-18-60-12-16-20-37-20-60 0-43 36-77 80-77Z"
-        fill="url(#g1)"
-      />
-      <path
-        d="M120 58c24 0 44 19 44 42 0 11-5 24-13 35-6 9-7 24-10 36-3 9-9 13-16 13"
-        stroke="url(#g2)"
-        strokeWidth="18"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
 export function Hero() {
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
@@ -85,7 +51,7 @@ export function Hero() {
           <div className="mx-auto w-full max-w-[1480px] px-6">
             <div className="text-center -translate-x-[5.89vw] sm:-translate-x-[6vw]">
               <div
-                className="font-[550] uppercase tracking-[0.02em] text-white/30"
+                className="font-[550image.png] uppercase tracking-[0.02em] text-white/30"
                 style={{
                   fontFamily: "var(--font-display), ui-serif, Georgia, serif",
                   fontSize: "clamp(72px, 11.4vw, 220px)",
@@ -176,13 +142,13 @@ export function Hero() {
                       BOOK A CONSULTATION
                     </motion.a>
                     <motion.a
-                      href="#services"
+                      href="/programs"
                       whileHover={{ y: -1 }}
                       whileTap={{ scale: 0.98 }}
                       transition={{ type: "spring", stiffness: 420, damping: 30 }}
                       className="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/10 px-5 py-3 text-[12px] tracking-[0.1em] text-white/90 backdrop-blur-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
                     >
-                      EXPLORE PROGRAMS
+                      EXPLORE OUR PROGRAMS
                     </motion.a>
                   </div>
                 </div>

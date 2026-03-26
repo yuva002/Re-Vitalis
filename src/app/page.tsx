@@ -3,44 +3,81 @@ import { AboutSection } from "@/components/AboutSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { HealthPlanSection } from "@/components/HealthPlanSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
+import PricingCards from "@/components/ui/pricing-component";
+import { Footer } from "@/components/ui/modem-animated-footer";
+import { Phone, Globe, MessageCircle } from "lucide-react";
 
 export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Re-Vitalis Wellness",
-    url: "https://example.com/",
+    url: "https://www.re-vitalis.in",
     description:
       "Re-Vitalis Wellness combines medical science, advanced therapies, and personalized care to help clients restore energy and achieve long-term vitality.",
   };
+
+  const quickLinks = [
+    { label: "Home", href: "/" },
+    { label: "About Doctor", href: "/about-doctor" },
+    { label: "Services", href: "/services/metabolic-programs" },
+    { label: "Blog", href: "#" },
+    { label: "Contact", href: "#contacts" },
+  ];
+
+  const serviceLinks = [
+    { label: "Advanced IV Drips", href: "/services/iv-therapy" },
+    { label: "Nutraceuticals", href: "/services/nutraceuticals" },
+    { label: "Metabolic Recovery Programs", href: "/services/metabolic-programs" },
+    { label: "About Doctor", href: "/about-doctor" },
+  ];
+
+  const contactItems = [
+    {
+      icon: <Globe className="w-4 h-4" />,
+      label: "www.re-vitalis.in",
+      href: "https://www.re-vitalis.in",
+    },
+    {
+      icon: <Phone className="w-4 h-4" />,
+      label: "9000179178",
+      href: "tel:9000179178",
+    },
+    {
+      icon: <MessageCircle className="w-4 h-4" />,
+      label: "WhatsApp: 9000179178",
+      href: "https://wa.me/919000179178",
+    },
+  ];
 
   return (
     <>
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Hero />
-      <AboutSection />
-      <ServicesSection />
-      <HealthPlanSection />
-      <TestimonialsSection />
 
-      {/* Minimal sections scaffold (keeps lighthouse/SEO structure healthy) */}
-      <main className="mx-auto w-full max-w-[1160px] px-6 py-16">
-        <section id="contacts" className="py-16">
-          <h2 className="text-[12px] font-[560] tracking-[0.22em] text-slate">
-            CONTACTS
-          </h2>
-          <div className="mt-8 rounded-[22px] border border-border bg-surface p-8">
-            <p className="text-[18px] font-[560] text-ink">Get in touch</p>
-            <p className="mt-2 text-[13px] leading-[1.75] text-slate">
-              Email: hello@re-vitalis.example · Phone: +34 7 91 00 00
-            </p>
-          </div>
-        </section>
-      </main>
+      {/* All visible content */}
+      <div className="bg-[#F2F3F3]">
+        <Hero />
+        <AboutSection />
+        <ServicesSection />
+        <HealthPlanSection />
+        <TestimonialsSection />
+        <PricingCards />
+
+        <Footer
+          brandName="Re-Vitalis"
+          brandDescription="Precision-led metabolic wellness and personalized therapeutic care."
+          tagline="Where Science Meets Transformation"
+          linkGroups={[
+            { heading: "Quick Links", links: quickLinks },
+            { heading: "Services", links: serviceLinks },
+          ]}
+          contactItems={contactItems}
+        />
+      </div>
     </>
   );
 }
+

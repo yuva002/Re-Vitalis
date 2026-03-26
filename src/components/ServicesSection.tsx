@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import {
   motion,
   useMotionValue,
@@ -280,10 +281,11 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative bg-white"
+      className="relative"
+      style={{ zIndex: 1 }}
       aria-labelledby="services-heading"
     >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#F2F3F3] to-white" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-transparent to-transparent" />
 
       <div className="relative mx-auto w-full max-w-[1480px] px-6 pt-20 pb-8 sm:pt-24 sm:pb-10">
         <header className="max-w-[740px]">
@@ -346,6 +348,12 @@ export function ServicesSection() {
                   <MetricPill label="FOCUS" value="INSULIN • ENERGY • INFLAMMATION" />
                   <MetricPill label="FORMAT" value="LONGITUDINAL CLINICIAN-LED PROGRAMS" />
                 </div>
+                <Link
+                  href="/services/metabolic-programs"
+                  className="mt-5 inline-flex w-fit items-center rounded-full border border-border bg-white/75 px-4 py-2 text-[11px] tracking-[0.12em] text-ink hover:bg-white"
+                >
+                  LEARN MORE
+                </Link>
               </div>
 
               <div className="relative min-h-[260px] sm:min-h-[320px]">
@@ -447,6 +455,12 @@ export function ServicesSection() {
                   <MetricPill label="TARGETS" value="FATIGUE • STRESS • RECOVERY" />
                   <MetricPill label="DELIVERY" value="IN-CLINIC INFUSION SESSIONS" />
                 </div>
+                <Link
+                  href="/services/iv-therapy"
+                  className="mt-5 inline-flex w-fit items-center rounded-full border border-border bg-white/75 px-4 py-2 text-[11px] tracking-[0.12em] text-ink hover:bg-white"
+                >
+                  LEARN MORE
+                </Link>
               </div>
             </div>
           </motion.article>
@@ -494,6 +508,12 @@ export function ServicesSection() {
                   <MetricPill label="APPROACH" value="LAB-INFORMED • EVIDENCE-LED" />
                   <MetricPill label="DELIVERY" value="CURATED STACKS & CYCLES" />
                 </div>
+                <Link
+                  href="/services/nutraceuticals"
+                  className="mt-5 inline-flex w-fit items-center rounded-full border border-border bg-white/75 px-4 py-2 text-[11px] tracking-[0.12em] text-ink hover:bg-white"
+                >
+                  LEARN MORE
+                </Link>
               </div>
 
               <div className="relative">

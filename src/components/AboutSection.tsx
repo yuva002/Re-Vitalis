@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import drRamana from "../../public/Dr-Ramana-DP.png";
 
@@ -23,12 +24,13 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-[#F2F3F3]"
+      className="relative overflow-hidden"
+      style={{ zIndex: 1 }}
       aria-labelledby="about-heading"
     >
       {/* smooth continuity from hero */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 inset-x-0 h-36 bg-gradient-to-b from-[#F2F3F3]/0 to-[#F2F3F3]" />
+        <div className="absolute -top-24 inset-x-0 h-36 bg-gradient-to-b from-transparent to-transparent" />
         <div className="absolute -left-44 top-6 h-[520px] w-[520px] rounded-full bg-white/55 blur-3xl" />
         <div className="absolute -right-48 bottom-[-140px] h-[560px] w-[560px] rounded-full bg-white/45 blur-3xl" />
       </div>
@@ -174,6 +176,12 @@ export function AboutSection() {
                   ROOT-CAUSE • BIOMARKERS • LONG-TERM VITALITY
                 </p>
               </motion.div>
+              <Link
+                href="/about-doctor"
+                className="mt-5 inline-flex items-center rounded-full border border-border bg-white/70 px-5 py-2 text-[12px] tracking-[0.12em] text-ink transition-colors hover:bg-white"
+              >
+                READ DOCTOR PROFILE
+              </Link>
             </motion.div>
           </div>
         </div>
