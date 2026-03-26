@@ -61,7 +61,7 @@ export default function AboutDoctorPage() {
             <div className="relative flex items-center justify-center">
               <div className="relative aspect-[4/5] w-full max-w-[420px] overflow-hidden rounded-[52%_48%_62%_38%/42%_46%_54%_58%] border-4 border-white bg-[#ebefed] shadow-xl">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXLBMKRIXfXqVaXK0KKjM2ji-cw_jWmyvz7zYfkHwHnIFcVq1TodUna3O2160nToSKRsjC82saKMTBLY1jCr0lPDYTI-19fQp9jZC9We3TAUxxZsMYQv-ZlFcBlIMoj-1x4lNJ16d4OFz3D6SBephgMepviDddquMCPrpno3H6r_PFcmBHvfkdwU5Ox_S24GWO5kFZk6mgioeS4B38Q70U0PwTgbU7k5nFdtGwSIbGKV9yx7vEZDnH3WMgJhCNW3kW6rY8yeN7oC-K"
+                  src="/Dr-Ramana-DP.png"
                   alt="Dr. Ramana Naidu Darmisetty"
                   fill
                   className="object-cover grayscale-[10%] transition-transform duration-[2000ms] hover:scale-105"
