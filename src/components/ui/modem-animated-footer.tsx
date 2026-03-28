@@ -17,6 +17,8 @@ interface FooterLinkGroup {
 
 interface FooterProps {
   brandName?: string;
+  /** Registered legal name shown on the copyright line */
+  legalEntityName?: string;
   brandDescription?: string;
   tagline?: string;
   linkGroups?: FooterLinkGroup[];
@@ -26,6 +28,7 @@ interface FooterProps {
 
 export const Footer = ({
   brandName = "Re-Vitalis",
+  legalEntityName = "Re-Vitalis Life sciences Private Limited",
   brandDescription = "Precision-led metabolic wellness and personalized therapeutic care.",
   tagline = "Where Science Meets Transformation",
   linkGroups = [],
@@ -42,7 +45,8 @@ export const Footer = ({
   return (
     <section className={cn("relative w-full mt-0 overflow-hidden", className)}>
       <footer
-        className="relative mt-20"
+        id="contacts"
+        className="relative mt-20 scroll-mt-24"
         style={{ background: BG, borderTop: `1px solid ${DIVIDER}` }}
       >
         <div className="max-w-7xl flex flex-col justify-between mx-auto min-h-[30rem] sm:min-h-[35rem] md:min-h-[40rem] relative p-4 py-10">
@@ -120,7 +124,7 @@ export const Footer = ({
           {/* Bottom: copyright */}
           <div className="mt-20 md:mt-24 flex flex-col gap-2 md:gap-1 items-center justify-center md:flex-row md:items-center md:justify-between px-4 md:px-0">
             <p className="text-sm text-center md:text-left" style={{ color: MUTED }}>
-              ©{new Date().getFullYear()} {brandName}. All rights reserved.
+              ©{new Date().getFullYear()} {legalEntityName}. All rights reserved.
             </p>
             <p className="text-sm italic" style={{ color: HEADING }}>{tagline}</p>
           </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight, LineChart, Droplets, Pill, Database, Dna, UserRound, Network, MessageCircle, Globe, Phone } from "lucide-react";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/ui/modem-animated-footer";
@@ -30,7 +31,12 @@ export default function ProgramsPage() {
                 Advanced biological intervention designed to restore metabolic equilibrium and enhance cellular function through clinical precision and botanical synergy.
               </p>
               <div className="flex flex-wrap items-center gap-4">
-                <button className="btn-premium btn-premium-primary px-7 py-3 text-[11px]">View Protocols</button>
+                <Link
+                  href="#program-pillars"
+                  className="btn-premium btn-premium-primary inline-flex px-7 py-3 text-[11px]"
+                >
+                  View Protocols
+                </Link>
                 <div className="flex items-center gap-2 text-white/60">
                   <Database className="h-4 w-4" />
                   <span className="text-xs uppercase tracking-widest">Evidence Based</span>
@@ -41,7 +47,7 @@ export default function ProgramsPage() {
           <div className="pointer-events-none absolute right-0 top-0 h-full w-1/3 translate-x-1/2 -skew-x-12 bg-[#061b0e]/20"></div>
         </section>
 
-        <section className="bg-[#f7faf8] px-12 py-32">
+        <section id="program-pillars" className="scroll-mt-24 bg-[#f7faf8] px-12 py-32">
           <div className="mb-20">
             <h2 className="mb-6 font-[var(--font-display)] text-5xl text-[#061b0e]">Our Foundational Pillars</h2>
             <div className="h-1 w-24 bg-[#e9c176]"></div>
@@ -62,9 +68,12 @@ export default function ProgramsPage() {
                   <li className="flex items-center gap-3"><span className="h-1.5 w-1.5 rounded-full bg-[#e9c176]"></span>Root-Cause Focus</li>
                 </ul>
               </div>
-              <button className="btn-premium btn-premium-ghost flex w-fit items-center gap-2 px-4 py-2 text-[10px] tracking-[0.14em] text-[#061b0e]">
-                Learn More <ArrowRight className="h-4 w-4" />
-              </button>
+              <Link
+                href="/services/metabolic-programs"
+                className="btn-premium btn-premium-ghost inline-flex w-fit items-center gap-2 px-4 py-2 text-[10px] tracking-[0.14em] text-[#061b0e]"
+              >
+                Learn More <ArrowRight className="h-4 w-4" aria-hidden />
+              </Link>
             </div>
 
             <div className="group flex min-h-[500px] flex-col justify-between bg-[#061b0e] p-10 text-white">
@@ -82,9 +91,12 @@ export default function ProgramsPage() {
                   <li className="flex items-center gap-3"><span className="h-1.5 w-1.5 rounded-full bg-[#e9c176]"></span>Medical Supervision</li>
                 </ul>
               </div>
-              <button className="btn-premium btn-premium-ghost flex w-fit items-center gap-2 px-4 py-2 text-[10px] tracking-[0.14em] text-[#e9c176]">
-                Learn More <ArrowRight className="h-4 w-4" />
-              </button>
+              <Link
+                href="/services/iv-therapy"
+                className="btn-premium btn-premium-ghost inline-flex w-fit items-center gap-2 px-4 py-2 text-[10px] tracking-[0.14em] text-[#e9c176]"
+              >
+                Learn More <ArrowRight className="h-4 w-4" aria-hidden />
+              </Link>
             </div>
 
             <div className="group flex min-h-[500px] flex-col justify-between bg-[#f1f4f2] p-10 transition-colors duration-500 hover:bg-[#ebefed]">
@@ -102,9 +114,12 @@ export default function ProgramsPage() {
                   <li className="flex items-center gap-3"><span className="h-1.5 w-1.5 rounded-full bg-[#e9c176]"></span>High Bioavailability</li>
                 </ul>
               </div>
-              <button className="btn-premium btn-premium-ghost flex w-fit items-center gap-2 px-4 py-2 text-[10px] tracking-[0.14em] text-[#061b0e]">
-                Learn More <ArrowRight className="h-4 w-4" />
-              </button>
+              <Link
+                href="/services/nutraceuticals"
+                className="btn-premium btn-premium-ghost inline-flex w-fit items-center gap-2 px-4 py-2 text-[10px] tracking-[0.14em] text-[#061b0e]"
+              >
+                Learn More <ArrowRight className="h-4 w-4" aria-hidden />
+              </Link>
             </div>
           </div>
         </section>
@@ -150,13 +165,21 @@ export default function ProgramsPage() {
             <span className="mb-8 block text-sm uppercase tracking-[0.3em] text-[#e9c176]">Begin Your Protocol</span>
             <h2 className="mb-12 font-[var(--font-display)] text-5xl leading-tight text-[#061b0e] md:text-7xl">Ready to Transform Your Health?</h2>
             <div className="flex flex-col items-center justify-center gap-6 md:flex-row">
-              <button className="btn-premium btn-premium-dark w-full px-8 py-3 text-[11px] md:w-auto">
+              <Link
+                href="#contacts"
+                className="btn-premium btn-premium-dark inline-flex w-full items-center justify-center px-8 py-3 text-[11px] md:w-auto"
+              >
                 Book Consultation
-              </button>
-              <button className="btn-premium btn-premium-ghost flex w-full items-center justify-center gap-2 px-8 py-3 text-[11px] text-[#181c1c] md:w-auto">
-                <MessageCircle className="h-4 w-4" />
+              </Link>
+              <a
+                href="https://wa.me/919000179178"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-premium btn-premium-ghost inline-flex w-full items-center justify-center gap-2 px-8 py-3 text-[11px] text-[#181c1c] md:w-auto"
+              >
+                <MessageCircle className="h-4 w-4" aria-hidden />
                 Whatsapp Us
-              </button>
+              </a>
             </div>
             <p className="mt-12 text-sm text-[#737973]">Consultations are conducted by licensed clinical practitioners.</p>
           </div>
@@ -172,7 +195,7 @@ export default function ProgramsPage() {
             heading: "Quick Links",
             links: [
               { label: "Home", href: "/" },
-              { label: "About Doctor", href: "/about-doctor" },
+              { label: "About Us", href: "/about-doctor" },
               { label: "Services", href: "/services/metabolic-programs" },
               { label: "Blog", href: "#" },
               { label: "Contact", href: "#contacts" },
@@ -184,7 +207,7 @@ export default function ProgramsPage() {
               { label: "Advanced IV Drips", href: "/services/iv-therapy" },
               { label: "Nutraceuticals", href: "/services/nutraceuticals" },
               { label: "Metabolic Recovery Programs", href: "/services/metabolic-programs" },
-              { label: "About Doctor", href: "/about-doctor" },
+              { label: "About Us", href: "/about-doctor" },
             ],
           },
         ]}

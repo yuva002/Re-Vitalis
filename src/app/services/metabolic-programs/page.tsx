@@ -8,7 +8,7 @@ import { Footer } from "@/components/ui/modem-animated-footer";
 export default function MetabolicProgramsPage() {
   const quickLinks = [
     { label: "Home", href: "/" },
-    { label: "About Doctor", href: "/about-doctor" },
+    { label: "About Us", href: "/about-doctor" },
     { label: "Services", href: "/services/metabolic-programs" },
     { label: "Blog", href: "#" },
     { label: "Contact", href: "#contacts" },
@@ -18,7 +18,7 @@ export default function MetabolicProgramsPage() {
     { label: "Advanced IV Drips", href: "/services/iv-therapy" },
     { label: "Nutraceuticals", href: "/services/nutraceuticals" },
     { label: "Metabolic Recovery Programs", href: "/services/metabolic-programs" },
-    { label: "About Doctor", href: "/about-doctor" },
+    { label: "About Us", href: "/about-doctor" },
   ];
 
   const contactItems = [

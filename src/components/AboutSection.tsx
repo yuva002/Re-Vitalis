@@ -180,7 +180,7 @@ export function AboutSection() {
                 href="/about-doctor"
                 className="mt-5 inline-flex items-center rounded-full border border-border bg-white/70 px-5 py-2 text-[12px] tracking-[0.12em] text-ink transition-colors hover:bg-white"
               >
-                READ DOCTOR PROFILE
+                ABOUT US
               </Link>
             </motion.div>
           </div>

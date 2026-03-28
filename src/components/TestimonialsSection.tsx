@@ -115,7 +115,7 @@ export function TestimonialsSection() {
             href="/about-doctor"
             className="mt-5 inline-flex items-center rounded-full border border-border bg-white/80 px-5 py-2 text-[11px] tracking-[0.12em] text-ink hover:bg-white"
           >
-            MEET THE DOCTOR
+            ABOUT US
           </Link>
         </motion.div>
 
