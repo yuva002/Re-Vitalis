@@ -9,6 +9,61 @@ import {
 } from "lucide-react";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/ui/modem-animated-footer";
+import { FAQSection } from "@/components/FAQSection";
+
+const nutraceuticalsFaqs = [
+  {
+    question: "What are nutraceuticals?",
+    answer:
+      "Nutraceuticals are bioactive compounds derived from food sources that provide health benefits beyond basic nutrition. They include vitamins, minerals, herbal extracts, amino acids, enzymes, and phytochemicals formulated at clinically effective doses to support metabolic function, immune health, hormonal balance, and cellular repair.",
+  },
+  {
+    question: "How are Re-Vitalis nutraceuticals different from over-the-counter supplements?",
+    answer:
+      "Re-Vitalis nutraceuticals are clinical-grade formulations selected and dosed based on your individual biomarker results — not generic recommendations. We use pharmaceutical-grade ingredients with verified bioavailability, third-party testing, and evidence-based dosing, unlike most over-the-counter products which use standardized blends without personalization.",
+  },
+  {
+    question: "How does Re-Vitalis personalize nutraceutical protocols?",
+    answer:
+      "Every Re-Vitalis nutraceutical protocol begins with a comprehensive biomarker assessment covering nutrient levels, hormonal markers, inflammatory indicators, gut health, and metabolic function. Our physician analyzes these results and designs a targeted supplement stack addressing your specific deficiencies and health goals — reviewed and adjusted every 8–12 weeks.",
+  },
+  {
+    question: "How long before I see results from nutraceuticals?",
+    answer:
+      "Results vary by protocol and individual. Many patients notice improved energy, sleep quality, or cognitive clarity within 2–4 weeks of starting a nutraceutical regimen. Deeper metabolic improvements such as hormonal balance and metabolic markers typically show measurable change in 8–16 weeks when combined with lifestyle modifications.",
+  },
+  {
+    question: "Can nutraceuticals be combined with IV therapy at Re-Vitalis?",
+    answer:
+      "Yes — combining nutraceuticals with IV therapy is one of the most effective approaches at Re-Vitalis. IV therapy rapidly replenishes depleted nutrients at the cellular level, while daily nutraceutical protocols maintain and build on those gains. Our physicians design integrated protocols ensuring the two modalities complement each other without overlap or interaction risks.",
+  },
+];
+
+const nutraceuticalsSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalProcedure",
+  name: "Clinical Nutraceutical Protocols",
+  description:
+    "Evidence-based, biomarker-personalized nutraceutical protocols using pharmaceutical-grade supplements to optimize metabolic health, hormonal balance, and cellular resilience.",
+  procedureType: "https://schema.org/TherapeuticProcedure",
+  howPerformed:
+    "A comprehensive biomarker assessment is performed, followed by physician analysis and formulation of a personalized supplement stack. Protocols are reviewed and adjusted every 8–12 weeks based on follow-up testing.",
+  provider: {
+    "@type": "MedicalBusiness",
+    name: "Re-Vitalis Wellness",
+    url: "https://www.re-vitalis.in",
+  },
+};
+
+const nutraceuticalsBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.re-vitalis.in" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://www.re-vitalis.in/services/nutraceuticals" },
+    { "@type": "ListItem", position: 3, name: "Nutraceuticals", item: "https://www.re-vitalis.in/services/nutraceuticals" },
+  ],
+};
 
 type NutraceuticalCategory = {
   title: string;
@@ -91,6 +146,7 @@ function CategoryCard({ category, index }: { category: NutraceuticalCategory; in
           alt={`${category.title} nutraceuticals`}
           width={400}
           height={192}
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
           className="h-full w-full object-cover"
         />
       </div>
@@ -369,6 +425,14 @@ export default function NutraceuticalsPage() {
 
   return (
     <div className="min-h-screen bg-[#f7faf8] font-['Inter']">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(nutraceuticalsSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(nutraceuticalsBreadcrumb) }}
+      />
       <NavBar />
       
       <main>
@@ -379,6 +443,7 @@ export default function NutraceuticalsPage() {
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuRrKutPvBwzLBzKWMx6YDXW1fPEoQ1TVBDmom7rfnde1KpFEopva8XX99hXMdCMQaiENQnVt0w6v9LFkjGwVRCFIYXIPLTJF4Z6sgb67MQHTBP4EMr52sEmo1oGiRDLY4hRlb8dSshaAe9AEOsK2n--eXJJU6r9Zjk5SfD-mUKssX3svjduDk2scbWNF5FzwB9ASMRd5-HazRY1LbHYv4YVMLyYkTnzvsLGqtCZQqruLJ-qRDjaxsm4e9X4muxyHHcNhBQr3bcE-Z"
               alt="Molecular biological structures"
               fill
+              sizes="100vw"
               className="object-cover grayscale brightness-110"
               priority
             />
@@ -435,6 +500,12 @@ export default function NutraceuticalsPage() {
         {/* Medical Credibility / Disclaimer */}
         <DisclaimerSection />
       </main>
+
+      <FAQSection
+        faqs={nutraceuticalsFaqs}
+        theme="light"
+        heading="Nutraceuticals — Common Questions"
+      />
 
       <Footer
         brandName="Re‑Vitalis"

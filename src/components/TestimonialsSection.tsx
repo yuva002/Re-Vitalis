@@ -87,8 +87,8 @@ const thirdColumn = testimonials.slice(7, 10);
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="relative overflow-hidden py-24 sm:py-28" style={{ zIndex: 1 }}>
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(90%_70%_at_20%_0%,rgba(59,130,246,0.10),transparent_65%),radial-gradient(70%_60%_at_100%_20%,rgba(59,130,246,0.08),transparent_60%)]" />
+    <section id="testimonials" className="relative overflow-hidden py-24 sm:py-28" style={{ zIndex: 1, contain: "layout style" }}>
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(95%_70%_at_50%_0%,rgba(200,169,110,0.08),transparent_60%),radial-gradient(70%_50%_at_0%_100%,rgba(20,90,85,0.12),transparent_55%)]" />
 
       <div className="relative z-10 mx-auto w-full max-w-[1480px] px-6 sm:px-10">
         <motion.div
@@ -98,35 +98,38 @@ export function TestimonialsSection() {
           viewport={{ once: true, amount: 0.35 }}
           className="mx-auto flex max-w-[720px] flex-col items-center text-center"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-white/70 px-4 py-1.5 text-[12px] font-[560] tracking-[0.18em] text-slate backdrop-blur-lg">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#C8A96E]/30 bg-[#0a2a28]/75 px-4 py-1.5 text-[12px] font-[560] tracking-[0.22em] text-[#C8A96E] backdrop-blur-lg">
             <Quote className="h-3.5 w-3.5" aria-hidden="true" />
             TESTIMONIALS
           </div>
+          <div className="home-jewel-rule mt-6 w-full max-w-md" aria-hidden />
           <h2
-            className="mt-6 text-balance text-[32px] font-[560] leading-[1.08] tracking-[-0.03em] text-ink sm:text-[44px]"
+            className="home-jewel-heading mt-5 text-balance text-[32px] font-[560] leading-[1.08] tracking-[0.02em] sm:text-[44px]"
             style={{ fontFamily: "var(--font-display), ui-serif, Georgia, serif" }}
           >
             Trusted by leaders who demand precision-driven care.
           </h2>
-          <p className="mt-4 max-w-[64ch] text-[15px] leading-[1.9] text-slate">
+          <p className="mt-4 max-w-[64ch] text-[15px] leading-[1.9] text-[#C2BDB5]">
             Real outcomes from patients who chose a personalized metabolic recovery model.
           </p>
           <Link
             href="/about-doctor"
-            className="mt-5 inline-flex items-center rounded-full border border-border bg-white/80 px-5 py-2 text-[11px] tracking-[0.12em] text-ink hover:bg-white"
+            className="mt-5 inline-flex items-center rounded-full border border-[#C8A96E]/38 bg-gradient-to-r from-[#C8A96E]/18 to-[#A07840]/15 px-5 py-2 text-[11px] tracking-[0.14em] text-[#F0ECE4] transition-all hover:border-[#E2C98A]/40 hover:shadow-[0_0_24px_rgba(200,169,110,0.14)]"
           >
             ABOUT US
           </Link>
         </motion.div>
 
         <div className="mt-12 flex justify-center gap-6 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_13%,black_87%,transparent)] max-h-[760px]">
-          <TestimonialsColumn testimonials={firstColumn} duration={22} />
+          <TestimonialsColumn tone="jewel" testimonials={firstColumn} duration={22} />
           <TestimonialsColumn
+            tone="jewel"
             testimonials={secondColumn}
             className="hidden md:block"
             duration={26}
           />
           <TestimonialsColumn
+            tone="jewel"
             testimonials={thirdColumn}
             className="hidden lg:block"
             duration={24}

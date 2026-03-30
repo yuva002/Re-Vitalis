@@ -6,13 +6,24 @@ import { cn } from "@/lib/utils";
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL("https://www.re-vitalis.in"),
   title: {
-    default: "Re-Vitalis Wellness",
+    default: "Re-Vitalis Wellness | IV Therapy, Nutraceuticals & Metabolic Recovery",
     template: "%s | Re-Vitalis Wellness",
   },
   description:
-    "Elevate your wellbeing and restore your vitality with personalized, science-led wellness care.",
+    "Re-Vitalis offers personalized IV therapy, clinical nutraceuticals, and metabolic recovery programs. Science-led wellness care that restores energy, vitality, and long-term health.",
+  keywords: [
+    "IV therapy",
+    "metabolic recovery",
+    "nutraceuticals",
+    "wellness clinic",
+    "precision medicine",
+    "functional medicine",
+    "biomarker testing",
+    "personalized wellness",
+    "Re-Vitalis",
+  ],
   robots: {
     index: true,
     follow: true,
@@ -25,22 +36,31 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "/",
+    canonical: "https://www.re-vitalis.in",
   },
   openGraph: {
     type: "website",
-    title: "Re-Vitalis Wellness",
+    title: "Re-Vitalis Wellness | IV Therapy, Nutraceuticals & Metabolic Recovery",
     description:
-      "Elevate your wellbeing and restore your vitality with personalized, science-led wellness care.",
+      "Re-Vitalis offers personalized IV therapy, clinical nutraceuticals, and metabolic recovery programs. Science-led wellness care that restores energy, vitality, and long-term health.",
     siteName: "Re-Vitalis Wellness",
     locale: "en_US",
-    url: "/",
+    url: "https://www.re-vitalis.in",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Re-Vitalis Wellness — Precision-led metabolic and IV therapy clinic",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Re-Vitalis Wellness",
+    title: "Re-Vitalis Wellness | IV Therapy, Nutraceuticals & Metabolic Recovery",
     description:
-      "Elevate your wellbeing and restore your vitality with personalized, science-led wellness care.",
+      "Re-Vitalis offers personalized IV therapy, clinical nutraceuticals, and metabolic recovery programs. Science-led wellness care that restores energy, vitality, and long-term health.",
+    images: ["/og-image.jpg"],
   },
 };
 

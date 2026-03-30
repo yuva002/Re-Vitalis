@@ -40,10 +40,11 @@
 html {
   color-scheme: light;
   background: transparent;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: transparent; /* shader-background.tsx provides the bg */
+  background: transparent;
   color: var(--foreground);
   font-family: var(--font-body), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
@@ -154,3 +155,137 @@ body {
     0 14px 30px rgba(32, 42, 44, 0.2),
     0 0 0 1px rgba(233, 193, 118, 0.22);
 }
+
+/*
+  Unified page-wide jewel surface.
+  Applied ONCE on the outer page wrapper so the gradient spans
+  the full document height → seamless scroll from Hero to Footer.
+  No `contain` here (would break position:sticky); sections apply
+  their own contain via inline style where needed.
+*/
+.home-jewel-surface {
+  position: relative;
+  background-color: #134742;
+  background-image:
+    /* subtle champagne bloom at the very top (hero) */
+    radial-gradient(ellipse 110% 55% at 50% 0%, rgba(245, 230, 195, 0.13), transparent 48%),
+    /* soft aqua highlight right edge */
+    radial-gradient(ellipse 65% 38% at 92% 18%, rgba(130, 210, 195, 0.10), transparent 52%),
+    /* warm left-edge depth */
+    radial-gradient(ellipse 60% 42% at 8% 72%, rgba(200, 169, 110, 0.07), transparent 50%),
+    /* bottom-left shadow anchor */
+    radial-gradient(ellipse 80% 40% at 20% 100%, rgba(6, 24, 22, 0.30), transparent 55%),
+    /* diagonal sheen */
+    linear-gradient(
+      210deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 32%,
+      transparent 65%,
+      rgba(0, 16, 14, 0.12) 100%
+    ),
+    /* main vertical colour ramp: light at top (hero) → dark at bottom */
+    linear-gradient(
+      180deg,
+      #2a7d75 0%,
+      #26736c 8%,
+      #226963 18%,
+      #1e5f5a 32%,
+      #1a5a54 46%,
+      #175550 58%,
+      #134d48 70%,
+      #114542 82%,
+      #0e3e3a 92%,
+      #0c3836 100%
+    );
+}
+
+/* Fine film grain — single feTurbulence layer (halved GPU filter cost) */
+.home-jewel-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.28;
+  mix-blend-mode: overlay;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23a)' opacity='.5'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  background-repeat: repeat;
+}
+
+/* Subtle silk weave + micro-brush (premium stationery / brushed metal) */
+/* Subtle silk weave + micro-brush (premium stationery / brushed metal) */
+.home-jewel-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+  mix-blend-mode: soft-light;
+  background-image:
+    repeating-linear-gradient(
+      122deg,
+      transparent 0,
+      transparent 6px,
+      rgba(200, 169, 110, 0.036) 6px,
+      rgba(200, 169, 110, 0.036) 7px
+    ),
+    repeating-linear-gradient(
+      -122deg,
+      transparent 0,
+      transparent 6px,
+      rgba(255, 252, 245, 0.032) 6px,
+      rgba(255, 252, 245, 0.032) 7px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      transparent 0,
+      transparent 2px,
+      rgba(0, 0, 0, 0.018) 2px,
+      rgba(0, 0, 0, 0.018) 3px
+    );
+  background-size: 100% 100%, 100% 100%, 100% 4px;
+}
+
+/*
+  Premium palette tokens
+  --pg-100  #F6EDD9  warm cream (near-white text)
+  --pg-200  #E2C98A  soft champagne (subheadings, rules)
+  --pg-300  #C8A96E  brushed gold primary (replaces #D4AF37 – less saturated, more refined)
+  --pg-400  #A07840  mid-depth antique gold
+  --pg-500  #6E5028  deep bronze shadow
+
+  Text
+  --pt-100  #F0ECE4  warm off-white (primary body)
+  --pt-200  #C2BDB5  warm light grey (secondary)
+  --pt-300  #888078  warm mid grey (muted)
+*/
+
+.home-jewel-heading {
+  background: linear-gradient(
+    168deg,
+    #F6EDD9 0%,
+    #E8D49A 28%,
+    #C8A96E 60%,
+    #A07840 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.home-jewel-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(200, 169, 110, 0.45),
+    rgba(226, 201, 138, 0.32),
+    rgba(200, 169, 110, 0.45),
+    transparent
+  );
+  box-shadow: 0 0 10px rgba(200, 169, 110, 0.12);
+}
+

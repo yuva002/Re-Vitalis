@@ -5,25 +5,107 @@ import Link from "next/link";
 import { ArrowRight, LineChart, Droplets, Pill, Database, Dna, UserRound, Network, MessageCircle, Globe, Phone } from "lucide-react";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/ui/modem-animated-footer";
+import { FAQSection } from "@/components/FAQSection";
+
+const programsFaqs = [
+  {
+    question: "What health programs does Re-Vitalis offer?",
+    answer:
+      "Re-Vitalis offers comprehensive wellness programs built on four foundational pillars: precision diagnostics (comprehensive biomarker testing), therapeutic interventions (IV therapy and nutraceuticals), metabolic nutrition (personalized dietary protocols), and lifestyle medicine (sleep, stress, and movement coaching). Programs are designed for weight management, energy restoration, hormonal balance, cardiovascular risk reduction, and longevity optimization.",
+  },
+  {
+    question: "How are Re-Vitalis programs customized to each patient?",
+    answer:
+      "Every Re-Vitalis program begins with a comprehensive biomarker assessment. The results inform a personalized protocol designed by our physician — specific to your deficiencies, imbalances, risk factors, and health goals. No two programs are identical. Protocols are reviewed and adjusted at each follow-up based on re-testing results and clinical response.",
+  },
+  {
+    question: "How long do Re-Vitalis wellness programs run?",
+    answer:
+      "Program duration depends on individual goals and health status. Foundational programs typically run 8 to 12 weeks. Comprehensive metabolic transformation programs may extend to 16–24 weeks. All programs include structured phases: assessment, active intervention, monitoring, and maintenance planning.",
+  },
+  {
+    question: "What is included in a Re-Vitalis health program?",
+    answer:
+      "A complete Re-Vitalis program includes: initial physician consultation, comprehensive biomarker panel, personalized IV therapy sessions, clinical nutraceutical protocol, nutritional guidance and meal planning support, lifestyle coaching, follow-up biomarker testing, and ongoing physician reviews. Premium plans include additional sessions, priority scheduling, and extended support.",
+  },
+  {
+    question: "How much do Re-Vitalis wellness programs cost?",
+    answer:
+      "Re-Vitalis program pricing varies based on the plan tier (Classic, Elite, or Platinum) and the specific interventions included. Pricing is available on our website and discussed transparently during your initial consultation. We offer a range of plans to ensure accessibility without compromising clinical quality.",
+  },
+];
+
+const programsSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Re-Vitalis Health Programs",
+  description:
+    "Comprehensive wellness programs combining precision diagnostics, IV therapy, nutraceuticals, and lifestyle medicine for metabolic transformation.",
+  provider: {
+    "@type": "MedicalBusiness",
+    name: "Re-Vitalis Wellness",
+    url: "https://www.re-vitalis.in",
+  },
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Classic Program",
+      description: "Foundation wellness program with biomarker testing, IV therapy, and nutraceutical protocol.",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Elite Program",
+      description: "Advanced metabolic recovery program with comprehensive testing, extended IV therapy, and personalized nutrition coaching.",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Platinum Program",
+      description: "The complete Re-Vitalis experience with unlimited sessions, priority access, exclusive perks, and extended physician support.",
+    },
+  ],
+};
+
+const programsBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.re-vitalis.in" },
+    { "@type": "ListItem", position: 2, name: "Programs", item: "https://www.re-vitalis.in/programs" },
+  ],
+};
 
 export default function ProgramsPage() {
   return (
     <div className="bg-[#f7faf8] text-[#181c1c]">
-      <NavBar />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(programsSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(programsBreadcrumb) }}
+      />
+      <div style={{ ["--ink" as any]: "#F0ECE4", ["--slate" as any]: "#D8D2C8" }}>
+        <NavBar />
+      </div>
 
       <main>
-        <section className="relative h-[calc(100vh-72px)] overflow-hidden bg-gradient-to-r from-[#061b0e] to-[#1b3022]">
+        <section className="relative h-screen overflow-hidden bg-gradient-to-r from-[#061b0e] to-[#1b3022]">
           <div className="absolute inset-0 z-0">
             <Image
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmlq1W_ehaI8Vxc-eCAJ057X7S56kvCuJ56g06tG52hVtKa7yC-jIRj6RORDDQvhCCmNl2Nv0VeqBw87ZRUqlRL0mQYVVuYzV_Pqp1jzeTqT_Db6rcDsE1fU0CqvyEwY30ycq4PVaMPHMkn60lheB79zXK9y8kQxIfFozZNUos3QMhrEtvHQ1OZ7jxe-WW1CTu28hSw2JdLTcf0KdDMRd65KSMFD00Jqgdh6wpDdb9TN9K1mqsow6XcyqMxlHELw4orlK-f920Gs1_"
               alt="Programs hero background"
               fill
+              sizes="100vw"
               className="object-cover"
               priority
             />
             <div className="absolute inset-0 bg-[#061b0e]/70" />
           </div>
-          <div className="container relative z-10 mx-auto grid h-[calc(100vh-72px)] grid-cols-1 items-center px-8 pb-10 pt-24 lg:px-12">
+          <div className="container relative z-10 mx-auto grid h-screen grid-cols-1 items-center px-8 pb-10 pt-24 lg:px-12">
             <div className="max-w-2xl">
               <span className="mb-4 block text-xs uppercase tracking-[0.28em] text-[#e9c176]">Precision Medicine</span>
               <h1 className="font-[var(--font-display)] text-4xl leading-[1.08] text-white md:text-6xl lg:text-7xl">Comprehensive Health Programs</h1>
@@ -185,6 +267,12 @@ export default function ProgramsPage() {
           </div>
         </section>
       </main>
+
+      <FAQSection
+        faqs={programsFaqs}
+        theme="light"
+        heading="Re-Vitalis Programs — Common Questions"
+      />
 
       <Footer
         brandName="Re‑Vitalis"

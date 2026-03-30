@@ -4,6 +4,63 @@ import Image from "next/image";
 import { ArrowDown, BadgeCheck, FlaskConical, HeartPulse, MessageCircle, Phone, SearchCheck, UserRoundCheck } from "lucide-react";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/ui/modem-animated-footer";
+import { FAQSection } from "@/components/FAQSection";
+
+const aboutDoctorFaqs = [
+  {
+    question: "Who is the physician at Re-Vitalis?",
+    answer:
+      "Re-Vitalis is led by a specialist in precision and functional medicine with advanced training in metabolic health, biomarker-driven diagnostics, and integrative therapeutics. Our physician combines an academic background in clinical medicine with hands-on expertise in IV therapy, nutraceutical protocols, and metabolic recovery — providing a level of care that goes beyond conventional medicine.",
+  },
+  {
+    question: "What specializations does the Re-Vitalis physician hold?",
+    answer:
+      "The Re-Vitalis physician specializes in precision medicine, functional medicine, metabolic health optimization, hormonal balance, and integrative therapeutics. Clinical expertise spans biomarker analysis, IV micronutrient therapy, nutraceutical prescription, and comprehensive metabolic recovery program design.",
+  },
+  {
+    question: "How does Re-Vitalis's approach differ from conventional medicine?",
+    answer:
+      "Conventional medicine typically treats disease after it manifests. Re-Vitalis's approach is proactive and root-cause focused — using comprehensive biomarker panels to identify imbalances before they become disease, then designing personalized interventions targeting the underlying metabolic, hormonal, and nutritional drivers of poor health.",
+  },
+  {
+    question: "Is the Re-Vitalis physician currently accepting new patients?",
+    answer:
+      "Yes, Re-Vitalis is currently accepting new patients. We recommend booking an initial consultation as early as possible, as appointment slots are limited to ensure each patient receives the full attention they deserve. Contact us at +91 9000179178 or via WhatsApp to schedule.",
+  },
+  {
+    question: "What medical conditions does Re-Vitalis address?",
+    answer:
+      "Re-Vitalis addresses a broad range of conditions rooted in metabolic dysfunction, including chronic fatigue, insulin resistance and pre-diabetes, hormonal imbalances (thyroid, adrenal, sex hormones), micronutrient deficiencies, gut dysbiosis, inflammatory conditions, cognitive fog, and cardiovascular risk factors. We also work with healthy individuals seeking to optimize performance, longevity, and vitality.",
+  },
+];
+
+const doctorSchema = {
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  name: "Re-Vitalis Wellness Physician",
+  description:
+    "A specialist in precision and functional medicine at Re-Vitalis Wellness, combining biomarker-driven diagnostics with advanced therapies including IV therapy, nutraceuticals, and metabolic recovery programs.",
+  worksFor: {
+    "@type": "MedicalBusiness",
+    name: "Re-Vitalis Wellness",
+    url: "https://www.re-vitalis.in",
+  },
+  medicalSpecialty: [
+    "Precision Medicine",
+    "Functional Medicine",
+    "Metabolic Health",
+    "Integrative Medicine",
+  ],
+};
+
+const aboutBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.re-vitalis.in" },
+    { "@type": "ListItem", position: 2, name: "About Our Specialist", item: "https://www.re-vitalis.in/about-doctor" },
+  ],
+};
 
 export default function AboutDoctorPage() {
   const quickLinks = [
@@ -28,6 +85,14 @@ export default function AboutDoctorPage() {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#f7faf8] text-[#181c1c]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(doctorSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutBreadcrumb) }}
+      />
       <NavBar />
 
       <main>
@@ -64,6 +129,7 @@ export default function AboutDoctorPage() {
                   src="/Dr-Ramana-DP.png"
                   alt="Dr. Ramana Naidu Darmisetty"
                   fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
                   className="object-cover grayscale-[10%] transition-transform duration-[2000ms] hover:scale-105"
                   priority
                 />
@@ -134,6 +200,7 @@ export default function AboutDoctorPage() {
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHoeKPg4eMwO6eJfrOVmym39deN7eI_A4S01JeOxu60vdjPpA-4PPKo1ZEOgTbSE8DlmhRm15VlCcW2mCGVkSFgQgveAibNPG9kbyy6evfxzeuIRUVAsoP7aHiAZ3Fiqsw5eRihkTFB0heUF4CZuHIGj6gPLVAVB4WbrFtHedC4jfy90O7vycc64lgfbpNhYmOpZu-pWsZkx9h1t6ZqMIGJss22uj6unTcxc0qBb_v5iSOramiI4Gr9PM7-qy-a287VmNzGCnRG3eN"
                   alt="Metabolic Interconnectedness"
                   fill
+                  sizes="100vw"
                   className="object-cover opacity-40 mix-blend-overlay"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -267,6 +334,7 @@ export default function AboutDoctorPage() {
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtoLMuZwtyM6jH1Q1Qg8mzs75vYfXQSVZRrHFmI2Rg7qDyxymBgD4Y4DTeaAiT7dlA3OMi5wSVmGzQtLgeOTG_GDZ-mUFDYil5VDlmIR5ySgBEeyb5f7yrd3ybY72yvLGMp69EX1C6wIEYHtGP45vgNfZnI4Bw-X2RPAfuDOJHGRz89BO5vcqhoZT5Z1RXTn7JvZre0Bw1zGgR08sVJUEUPDMPKg6bv8WL4Q3H-msG-9wl1gL9vlRAHdtjTLGqse-Pc272ANnRumeA"
                   alt="Patient-Centered Care"
                   fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                   className="object-cover"
                 />
               </div>
@@ -313,6 +381,12 @@ export default function AboutDoctorPage() {
           </div>
         </section>
       </main>
+
+      <FAQSection
+        faqs={aboutDoctorFaqs}
+        theme="light"
+        heading="About Our Specialist — Common Questions"
+      />
 
       <Footer
         brandName="Re‑Vitalis"

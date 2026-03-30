@@ -4,6 +4,65 @@ import Image from "next/image";
 import { CalendarDays, MessageCircle, ChevronRight, RefreshCw, Bolt, ChartLine, Phone, Globe } from "lucide-react";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/ui/modem-animated-footer";
+import { FAQSection } from "@/components/FAQSection";
+
+const metabolicFaqs = [
+  {
+    question: "What is a metabolic recovery program?",
+    answer:
+      "A metabolic recovery program is a structured, clinically supervised health intervention that identifies and addresses the root causes of metabolic dysfunction — including insulin resistance, hormonal imbalance, chronic inflammation, and mitochondrial inefficiency. At Re-Vitalis, programs combine comprehensive biomarker testing, IV therapy, personalized nutrition, and lifestyle medicine into a single cohesive protocol.",
+  },
+  {
+    question: "What biomarker tests are included in the Re-Vitalis metabolic assessment?",
+    answer:
+      "The Re-Vitalis metabolic panel includes fasting glucose and insulin, HbA1c, full lipid profile, thyroid function (TSH, T3, T4), sex hormones (testosterone, estradiol, DHEA-S), cortisol, CRP, homocysteine, vitamin D, B12, ferritin, liver enzymes, and kidney function markers — among others tailored to each patient's clinical picture.",
+  },
+  {
+    question: "How long does a Re-Vitalis metabolic recovery program last?",
+    answer:
+      "Most Re-Vitalis metabolic programs run 8 to 16 weeks, depending on the severity of the metabolic dysfunction and individual response. The program is divided into phases: initial assessment and protocol design (weeks 1–2), active intervention with regular monitoring (weeks 3–12), and consolidation and maintenance planning (weeks 13–16).",
+  },
+  {
+    question: "Who is a good candidate for metabolic recovery at Re-Vitalis?",
+    answer:
+      "Metabolic recovery is appropriate for individuals experiencing persistent fatigue, unexplained weight gain, insulin resistance or pre-diabetes, hormonal imbalances, elevated inflammatory markers, or cardiovascular risk factors. It is also highly effective for high-performers seeking to optimize energy, body composition, and cognitive function.",
+  },
+  {
+    question: "What measurable results can I expect from a Re-Vitalis metabolic program?",
+    answer:
+      "Clinical outcomes vary by individual, but typical results after a complete Re-Vitalis metabolic program include improved fasting glucose and insulin sensitivity, optimized lipid profiles, restored hormonal balance, reduced inflammatory markers, significant improvement in energy levels and body composition, and enhanced cognitive clarity — all measured through repeat biomarker testing.",
+  },
+];
+
+const metabolicSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalProcedure",
+  name: "Metabolic Recovery Program",
+  description:
+    "A structured clinical program combining comprehensive biomarker testing, IV therapy, nutrition coaching, and lifestyle medicine to reverse metabolic dysfunction and restore long-term health.",
+  procedureType: "https://schema.org/TherapeuticProcedure",
+  howPerformed:
+    "Patients undergo a comprehensive biomarker panel, followed by physician-designed intervention combining IV therapy, nutraceutical protocols, nutritional guidance, and lifestyle coaching. Progress is monitored through repeat testing every 4–8 weeks.",
+  preparation:
+    "An initial physician consultation and fasting blood draw are required before beginning the program.",
+  followup:
+    "Follow-up biomarker testing and physician reviews are scheduled at 8 and 16 weeks, with ongoing maintenance planning thereafter.",
+  provider: {
+    "@type": "MedicalBusiness",
+    name: "Re-Vitalis Wellness",
+    url: "https://www.re-vitalis.in",
+  },
+};
+
+const metabolicBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.re-vitalis.in" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://www.re-vitalis.in/services/metabolic-programs" },
+    { "@type": "ListItem", position: 3, name: "Metabolic Recovery Programs", item: "https://www.re-vitalis.in/services/metabolic-programs" },
+  ],
+};
 
 export default function MetabolicProgramsPage() {
   const quickLinks = [
@@ -41,7 +100,17 @@ export default function MetabolicProgramsPage() {
 
   return (
     <div className="min-h-screen bg-[#f7faf8] font-['Inter'] text-[#181c1c] selection:bg-[#e9c176]/30">
-      <NavBar />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(metabolicSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(metabolicBreadcrumb) }}
+      />
+      <div style={{ ["--ink" as any]: "#F0ECE4", ["--slate" as any]: "#D8D2C8" }}>
+        <NavBar />
+      </div>
 
       <main>
         <section className="relative flex min-h-screen items-center overflow-hidden bg-[#061b0e] px-8 text-white">
@@ -50,6 +119,7 @@ export default function MetabolicProgramsPage() {
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT_h8rTEnOhHdi6nCXABUR4vX7XPD0BepLUS9l2T4NDs-6M1908AqIQjpuSi4vR3vk8u5EAvvxRlI9VnSqE3nV2SB4b_yMtucoyqjBSj4P_s8vsnWh8m4a29xsssEW-i4DCiyV1vdAWrHhoNdmWEBWv-dBNVLBXVf6hd9TVwUoQH7a2kLFa0klD4n8nUFEW9xvGqlmve6wN483wfFHp1nDMN29H_n3piU06VR25idyDZJF7F0CwZ6Gb6vuex3BxpGqyuIXVbL2ju5O"
               alt="DNA structures"
               fill
+              sizes="100vw"
               className="object-cover mix-blend-overlay"
             />
           </div>
@@ -231,6 +301,7 @@ export default function MetabolicProgramsPage() {
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFloDeatG0WVXvK5u55gQFNHENmwk644-QAIEyPKfvmzIbjDsjaS_-AVrHOrkVu-u1WukgM_sYEiBbSVeh3W3rlkXdCTprO7LBWeveaIqV-IqcjzWcN7d1kvNsL-DyMAovscTcBdYNYyLwJNIcCErK7VH8cJ8TJhhdu6K8K5vftdRpRHMcoaAwAHqF5ugYKvgZ8jim5QJ6xEe1uPfR3a-81l-t9Ru3JGu6yk_5rh-kSgKKdEF3SABigzypQvth_qVQnKtAzFOY1AKc"
               alt="Clinic interior"
               fill
+              sizes="100vw"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-[#061b0e]/80 backdrop-blur-sm"></div>
@@ -255,6 +326,12 @@ export default function MetabolicProgramsPage() {
           </div>
         </section>
       </main>
+
+      <FAQSection
+        faqs={metabolicFaqs}
+        theme="light"
+        heading="Metabolic Recovery — Common Questions"
+      />
 
       <Footer
         brandName="Re‑Vitalis"

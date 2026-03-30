@@ -15,6 +15,65 @@ import {
 } from "lucide-react";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/ui/modem-animated-footer";
+import { FAQSection } from "@/components/FAQSection";
+
+const ivTherapyFaqs = [
+  {
+    question: "What is IV therapy and how does it work?",
+    answer:
+      "IV (intravenous) therapy delivers vitamins, minerals, amino acids, and other nutrients directly into your bloodstream, bypassing the digestive system. This achieves up to 100% bioavailability — compared to roughly 20–50% from oral supplements — allowing for faster cellular uptake, immediate replenishment, and more effective therapeutic outcomes.",
+  },
+  {
+    question: "How long does an IV drip session take at Re-Vitalis?",
+    answer:
+      "A typical Re-Vitalis IV drip session takes between 45 and 90 minutes, depending on the specific formulation and your treatment plan. Our clinical team monitors you throughout the session to ensure comfort and safety.",
+  },
+  {
+    question: "What conditions can IV therapy help treat?",
+    answer:
+      "Re-Vitalis IV therapy is clinically indicated for chronic fatigue, immune dysfunction, micronutrient deficiencies, dehydration, cognitive fog, athletic recovery, hangover relief, metabolic support, and anti-aging protocols. Each formulation is tailored to your specific biomarker results and health goals.",
+  },
+  {
+    question: "Is IV therapy safe?",
+    answer:
+      "Yes. All Re-Vitalis IV formulations are prepared under clinical supervision using pharmaceutical-grade nutrients. Our physician assesses your health history and biomarker data before each protocol. Adverse reactions are rare, and our clinical team is present throughout every session.",
+  },
+  {
+    question: "How many IV therapy sessions will I need?",
+    answer:
+      "The number of sessions depends on your individual goals and health status. Acute conditions such as dehydration or acute fatigue may resolve in 1–3 sessions. Chronic conditions or optimization protocols typically involve 4–12 sessions over several weeks. Your Re-Vitalis physician will recommend a personalized schedule after your initial assessment.",
+  },
+];
+
+const ivTherapySchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalProcedure",
+  name: "IV Drip Therapy",
+  description:
+    "Intravenous delivery of vitamins, minerals, amino acids, and nutrients directly into the bloodstream for maximum bioavailability and therapeutic benefit.",
+  procedureType: "https://schema.org/TherapeuticProcedure",
+  howPerformed:
+    "A licensed physician assesses the patient's biomarker profile and health history, then formulates a personalized IV blend administered intravenously over 45–90 minutes in a clinical setting.",
+  preparation:
+    "Patients should be well hydrated and have eaten a light meal before their session. Initial sessions require a physician consultation and bloodwork review.",
+  followup:
+    "Follow-up biomarker testing and physician review are scheduled based on the patient's treatment plan, typically every 4–8 weeks.",
+  provider: {
+    "@type": "MedicalBusiness",
+    name: "Re-Vitalis Wellness",
+    url: "https://www.re-vitalis.in",
+  },
+};
+
+const ivBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.re-vitalis.in" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://www.re-vitalis.in/services/iv-therapy" },
+    { "@type": "ListItem", position: 3, name: "IV Drip Therapy", item: "https://www.re-vitalis.in/services/iv-therapy" },
+  ],
+};
 
 export default function IVTherapyPage() {
   const quickLinks = [
@@ -52,6 +111,14 @@ export default function IVTherapyPage() {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#f7faf8] font-['Inter'] text-[#181c1c] selection:bg-[#e9c176] selection:text-[#061b0e]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ivTherapySchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ivBreadcrumb) }}
+      />
       <NavBar />
 
       <main>
@@ -61,6 +128,7 @@ export default function IVTherapyPage() {
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwi2cmz0_wwOkNomPKixjJc8Z-Mrn8EtIp-EkBoWsfUfRnkVx5pkilJVOjWcD7XeBjvvo6nfyZLGLv3KAoPUK4C1CK2OGGFghKH_ARXbSNg5tBdb_v3Qw1yr3YWrNJ4-VKUjYe8kjbFZnBfJYfuaQYjjtj5uULPzJLRSN1rsVuTo92a0H6-5uWzBxcf5WEhEWukHCB47hLGWlmCTQJQElKjf7YpOaZEkkZLmcXMrzue7dU9NuD1UAZ0NuCyY8eeJFMqHM6dUMZlzbv"
               alt="Luxury medical spa interior"
               fill
+              sizes="100vw"
               className="object-cover"
               priority
             />
@@ -168,6 +236,7 @@ export default function IVTherapyPage() {
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuAao5pErz_q9wdwqwAuAPCAgDjVDccNq1RaiMyASRgSUrOFyHsekNy2c2L-hKzZ1cxjU15uxSPZoo-UQrsgASD_lsF5FMRFff29xEIQiUhxF7Gcicvv9wplbHpM4mEgNTahsjM5Djufnl5YSFaY08TWsFNbBIVjj7eWbXoHNXT10lZF5m5Rmnme1GLH__eTnDWcnKwwIlzjXb_UKgRRUu7ftPoHxPuQXk9SNEohO0f3r3e5t_rmCu3FNcr8ktF2Y5TtwsYPUf5ROhiF"
                     alt="Abstract crystalline structure"
                     fill
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="object-cover"
                   />
                 </div>
@@ -308,6 +377,12 @@ export default function IVTherapyPage() {
           </div>
         </section>
       </main>
+
+      <FAQSection
+        faqs={ivTherapyFaqs}
+        theme="light"
+        heading="IV Therapy — Common Questions"
+      />
 
       <Footer
         brandName="Re‑Vitalis"
