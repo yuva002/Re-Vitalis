@@ -2,26 +2,33 @@ import dynamic from "next/dynamic";
 import { Hero } from "@/components/Hero";
 import { Phone, Globe, MessageCircle } from "lucide-react";
 
-// Below-fold sections: dynamically imported to split JS into separate chunks.
-// SSR is kept enabled so content is still server-rendered for SEO.
-const AboutSection = dynamic(() =>
-  import("@/components/AboutSection").then((m) => ({ default: m.AboutSection }))
+// Below-fold sections: dynamically imported with loading placeholder
+const AboutSection = dynamic(
+  () => import("@/components/AboutSection").then((m) => ({ default: m.AboutSection })),
+  { loading: () => <div className="h-screen" /> }
 );
-const ServicesSection = dynamic(() =>
-  import("@/components/ServicesSection").then((m) => ({ default: m.ServicesSection }))
+const ServicesSection = dynamic(
+  () => import("@/components/ServicesSection").then((m) => ({ default: m.ServicesSection })),
+  { loading: () => <div className="h-screen" /> }
 );
-const HealthPlanSection = dynamic(() =>
-  import("@/components/HealthPlanSection").then((m) => ({ default: m.HealthPlanSection }))
+const HealthPlanSection = dynamic(
+  () => import("@/components/HealthPlanSection").then((m) => ({ default: m.HealthPlanSection })),
+  { loading: () => <div className="h-[300vh]" /> }
 );
-const TestimonialsSection = dynamic(() =>
-  import("@/components/TestimonialsSection").then((m) => ({ default: m.TestimonialsSection }))
+const TestimonialsSection = dynamic(
+  () => import("@/components/TestimonialsSection").then((m) => ({ default: m.TestimonialsSection })),
+  { loading: () => <div className="h-screen" /> }
 );
-const PricingCards = dynamic(() => import("@/components/ui/pricing-component"));
-const FAQSection = dynamic(() =>
-  import("@/components/FAQSection").then((m) => ({ default: m.FAQSection }))
+const PricingCards = dynamic(() => import("@/components/ui/pricing-component"), {
+  loading: () => <div className="h-screen" />
+});
+const FAQSection = dynamic(
+  () => import("@/components/FAQSection").then((m) => ({ default: m.FAQSection })),
+  { loading: () => <div className="h-96" /> }
 );
-const Footer = dynamic(() =>
-  import("@/components/ui/modem-animated-footer").then((m) => ({ default: m.Footer }))
+const Footer = dynamic(
+  () => import("@/components/ui/modem-animated-footer").then((m) => ({ default: m.Footer })),
+  { loading: () => <div className="h-96" /> }
 );
 
 const homepageFaqs = [
@@ -95,7 +102,7 @@ export default function Home() {
     { label: "About Us", href: "/about-doctor" },
     { label: "Services", href: "/services/metabolic-programs" },
     { label: "Careers", href: "/careers" },
-    { label: "Blog", href: "#" },
+    { label: "Blog", href: "/blog" },
     { label: "Contact", href: "#contacts" },
   ];
 

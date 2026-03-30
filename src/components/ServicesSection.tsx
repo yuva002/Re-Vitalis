@@ -283,32 +283,33 @@ export function ServicesSection() {
     <section
       id="services"
       className="relative"
-      style={{ zIndex: 1, contain: "layout style" }}
+      style={{ zIndex: 1, contentVisibility: "auto" }}
       aria-labelledby="services-heading"
     >
-      <div className="relative mx-auto w-full max-w-[1480px] px-6 pt-20 pb-8 sm:pt-24 sm:pb-10">
+      <div className="relative mx-auto w-full max-w-[1480px] px-4 pt-16 pb-6 sm:px-6 sm:pt-20 sm:pb-8 lg:pt-24 lg:pb-10">
         <header className="max-w-[740px]">
-          <p className="text-[12px] font-[560] tracking-[0.28em] text-[#C8A96E]">
+          <p className="text-[11px] sm:text-[12px] font-[560] tracking-[0.28em] text-[#C8A96E]">
             SERVICES
           </p>
-          <div className="home-jewel-rule mt-4 max-w-lg" aria-hidden />
+          <div className="home-jewel-rule mt-3 sm:mt-4 max-w-lg" aria-hidden />
           <h2
             id="services-heading"
-            className="home-jewel-heading mt-5 text-[30px] font-[560] leading-[1.12] tracking-[0.02em] sm:text-[38px]"
+            className="home-jewel-heading mt-4 sm:mt-5 text-[24px] sm:text-[30px] lg:text-[38px] font-[560] leading-[1.12] tracking-[0.02em]"
             style={{ fontFamily: "var(--font-display), ui-serif, Georgia, serif" }}
           >
             Precision therapies that restore the metabolic system as a whole.
           </h2>
         </header>
 
-        <div className="mt-12 space-y-10">
+        <div className="mt-8 sm:mt-10 lg:mt-12 space-y-6 sm:space-y-8 lg:space-y-10">
           {/* 1. Metabolic Recovery */}
           <motion.article
-            initial={reduce ? undefined : { opacity: 0, y: 16, filter: "blur(12px)" }}
-            whileInView={reduce ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-[28px] border border-[#C8A96E]/18 bg-[#0f4842]/65 shadow-[0_26px_90px_rgba(0,0,0,0.32)] backdrop-blur-sm will-change-transform"
+            initial={reduce ? undefined : { opacity: 0, y: 16 }}
+            whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3, margin: "100px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="relative overflow-hidden rounded-[28px] border border-[#C8A96E]/18 bg-[#0f4842]/65 shadow-[0_26px_90px_rgba(0,0,0,0.32)] backdrop-blur-sm"
+            style={{ contentVisibility: "auto" }}
           >
             <div className="pointer-events-none absolute inset-0">
               <div className="absolute -left-10 top-0 h-[380px] w-[380px] rounded-full bg-[#C8A96E]/05 blur-3xl" />
@@ -317,13 +318,13 @@ export function ServicesSection() {
 
             {/* DNA as a background layer (no standalone "image on the right") */}
             <div className="pointer-events-none absolute inset-0">
-              <div className="absolute inset-y-0 right-0 w-[55%] md:w-[52%]">
+              <div className="absolute inset-y-0 right-0 w-[65%] sm:w-[55%] md:w-[52%]">
                 <div className="relative h-full w-full">
                   <Image
                     src={dnaImg}
                     alt=""
                     fill
-                    sizes="(min-width: 1024px) 52vw, 100vw"
+                    sizes="(max-width: 640px) 65vw, (max-width: 768px) 55vw, 52vw"
                     priority={false}
                     className="select-none object-contain opacity-[0.85] drop-shadow-[0_30px_80px_rgba(0,0,0,0.5)] scale-[1.25]"
                   />
@@ -331,26 +332,26 @@ export function ServicesSection() {
               </div>
             </div>
 
-            <div className="relative z-10 grid gap-10 px-8 py-10 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:gap-12 md:px-12 md:py-12">
+            <div className="relative z-10 grid gap-6 px-5 py-7 sm:gap-8 sm:px-7 sm:py-9 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:gap-10 md:px-10 md:py-10 lg:gap-12 lg:px-12 lg:py-12">
               <div className="flex flex-col justify-center">
                 <h3
-                  className="text-[22px] font-[560] tracking-[0.02em] text-[#F0ECE4] sm:text-[26px]"
+                  className="text-[20px] sm:text-[22px] lg:text-[26px] font-[560] tracking-[0.02em] text-[#F0ECE4] leading-[1.2]"
                   style={{ fontFamily: "var(--font-display), ui-serif, Georgia, serif" }}
                 >
                   Metabolic Recovery Programs
                 </h3>
-                <p className="mt-4 text-[14px] leading-[1.9] text-[#C2BDB5] sm:text-[15px]">
+                <p className="mt-3 sm:mt-4 text-[13px] sm:text-[14px] lg:text-[15px] leading-[1.9] text-[#C2BDB5]">
                   Personalized programs designed to address insulin resistance, fatigue,
                   obesity, cardiometabolic stress, and long-term metabolic dysfunction.
                 </p>
 
-                <div className="mt-6 flex flex-wrap gap-2.5">
+                <div className="mt-5 sm:mt-6 flex flex-wrap gap-2 sm:gap-2.5">
                   <MetricPill label="FOCUS" value="INSULIN • ENERGY • INFLAMMATION" />
                   <MetricPill label="FORMAT" value="LONGITUDINAL CLINICIAN-LED PROGRAMS" />
                 </div>
                 <Link
                   href="/services/metabolic-programs"
-                  className="mt-5 inline-flex w-fit items-center rounded-full border border-[#C8A96E]/38 bg-gradient-to-r from-[#C8A96E]/18 to-[#A07840]/15 px-4 py-2 text-[11px] tracking-[0.14em] text-[#F0ECE4] transition-all hover:border-[#E2C98A]/40 hover:shadow-[0_0_24px_rgba(200,169,110,0.14)]"
+                  className="mt-4 sm:mt-5 inline-flex w-full sm:w-fit items-center justify-center sm:justify-start rounded-full border border-[#C8A96E]/38 bg-gradient-to-r from-[#C8A96E]/18 to-[#A07840]/15 px-4 py-2.5 min-h-11 text-[10px] sm:text-[11px] tracking-[0.14em] text-[#F0ECE4] transition-all hover:border-[#E2C98A]/40 hover:shadow-[0_0_24px_rgba(200,169,110,0.14)]"
                 >
                   LEARN MORE
                 </Link>
@@ -408,27 +409,28 @@ export function ServicesSection() {
 
           {/* 2. Advanced IV Drips */}
           <motion.article
-            initial={reduce ? undefined : { opacity: 0, y: 16, filter: "blur(12px)" }}
-            whileInView={reduce ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.9, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-[28px] border border-[#C8A96E]/18 bg-[#0f4842]/65 shadow-[0_26px_90px_rgba(0,0,0,0.32)] backdrop-blur-sm will-change-transform"
+            initial={reduce ? undefined : { opacity: 0, y: 16 }}
+            whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3, margin: "100px" }}
+            transition={{ duration: 0.7, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
+            className="relative overflow-hidden rounded-[28px] border border-[#C8A96E]/18 bg-[#0f4842]/65 shadow-[0_26px_90px_rgba(0,0,0,0.32)] backdrop-blur-sm"
+            style={{ contentVisibility: "auto" }}
           >
             <div className="pointer-events-none absolute inset-0">
               <div className="absolute -right-6 top-0 h-[360px] w-[360px] rounded-full bg-[#C8A96E]/05 blur-3xl" />
               <div className="absolute -left-16 bottom-[-80px] h-[420px] w-[420px] rounded-full bg-[#001a1a]/40 blur-3xl" />
             </div>
 
-            <div className="relative z-10 grid gap-10 px-8 py-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] md:gap-12 md:px-12 md:py-12">
+            <div className="relative z-10 grid gap-6 px-5 py-7 sm:gap-8 sm:px-7 sm:py-9 md:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] md:gap-10 md:px-10 md:py-10 lg:gap-12 lg:px-12 lg:py-12">
               {/* LEFT: interactive 3D ECG / heart rate / metabolism widgets */}
-              <div className="relative min-h-[260px] sm:min-h-[320px]">
+              <div className="relative min-h-[200px] sm:min-h-[260px] md:min-h-[320px]">
                 {/* Keep sprint image in the foreground layer so widgets don't fully hide it */}
                 <div className="pointer-events-none absolute inset-0 z-10">
                   <Image
                     src={sprintImg}
                     alt=""
                     fill
-                    sizes="(min-width: 1024px) 42vw, 100vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 42vw"
                     priority={false}
                     className="select-none object-contain object-right-bottom -translate-x-[50%] translate-y-[0%] opacity-[0.95] drop-shadow-[0_30px_80px_rgba(32,42,44,0.36)] scale-[2]"
                   />
@@ -441,23 +443,23 @@ export function ServicesSection() {
               {/* RIGHT: copy */}
               <div className="flex flex-col justify-center">
                 <h3
-                  className="text-[22px] font-[560] tracking-[0.02em] text-[#F0ECE4] sm:text-[26px]"
+                  className="text-[20px] sm:text-[22px] lg:text-[26px] font-[560] tracking-[0.02em] text-[#F0ECE4] leading-[1.2]"
                   style={{ fontFamily: "var(--font-display), ui-serif, Georgia, serif" }}
                 >
                   Advanced IV Drip Therapies
                 </h3>
-                <p className="mt-4 text-[14px] leading-[1.9] text-[#C2BDB5] sm:text-[15px]">
+                <p className="mt-3 sm:mt-4 text-[13px] sm:text-[14px] lg:text-[15px] leading-[1.9] text-[#C2BDB5]">
                   Medically supervised IV protocols for vascular support, metabolic
                   activation, energy optimization, detoxification, and recovery.
                 </p>
 
-                <div className="mt-6 flex flex-wrap gap-2.5">
+                <div className="mt-5 sm:mt-6 flex flex-wrap gap-2 sm:gap-2.5">
                   <MetricPill label="TARGETS" value="FATIGUE • STRESS • RECOVERY" />
                   <MetricPill label="DELIVERY" value="IN-CLINIC INFUSION SESSIONS" />
                 </div>
                 <Link
                   href="/services/iv-therapy"
-                  className="mt-5 inline-flex w-fit items-center rounded-full border border-[#C8A96E]/38 bg-gradient-to-r from-[#C8A96E]/18 to-[#A07840]/15 px-4 py-2 text-[11px] tracking-[0.14em] text-[#F0ECE4] transition-all hover:border-[#E2C98A]/40 hover:shadow-[0_0_24px_rgba(200,169,110,0.14)]"
+                  className="mt-4 sm:mt-5 inline-flex w-full sm:w-fit items-center justify-center sm:justify-start rounded-full border border-[#C8A96E]/38 bg-gradient-to-r from-[#C8A96E]/18 to-[#A07840]/15 px-4 py-2.5 min-h-11 text-[10px] sm:text-[11px] tracking-[0.14em] text-[#F0ECE4] transition-all hover:border-[#E2C98A]/40 hover:shadow-[0_0_24px_rgba(200,169,110,0.14)]"
                 >
                   LEARN MORE
                 </Link>
@@ -467,23 +469,24 @@ export function ServicesSection() {
 
           {/* 3. Nutraceutical Protocols */}
           <motion.article
-            initial={reduce ? undefined : { opacity: 0, y: 16, filter: "blur(12px)" }}
-            whileInView={reduce ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-[28px] border border-[#C8A96E]/18 bg-[#0f4842]/65 shadow-[0_26px_90px_rgba(0,0,0,0.32)] backdrop-blur-sm will-change-transform"
+            initial={reduce ? undefined : { opacity: 0, y: 16 }}
+            whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3, margin: "100px" }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="relative overflow-hidden rounded-[28px] border border-[#C8A96E]/18 bg-[#0f4842]/65 shadow-[0_26px_90px_rgba(0,0,0,0.32)] backdrop-blur-sm"
+            style={{ contentVisibility: "auto" }}
           >
             <div className="pointer-events-none absolute inset-0">
               <div className="absolute -left-24 top-[-40px] h-[360px] w-[360px] rounded-full bg-[#C8A96E]/05 blur-3xl" />
               <div className="absolute right-[-60px] bottom-[-80px] h-[420px] w-[420px] rounded-full bg-[#001a1a]/40 blur-3xl" />
               {/* pills as a background layer */}
-                <div className="absolute inset-y-0 right-0 w-[62%] md:w-[58%]">
+                <div className="absolute inset-y-0 right-0 w-[70%] sm:w-[62%] md:w-[58%]">
                 <div className="relative h-full w-full">
                   <Image
                     src={pillsImg}
                     alt=""
                     fill
-                    sizes="(min-width: 1024px) 52vw, 100vw"
+                    sizes="(max-width: 640px) 70vw, (max-width: 768px) 62vw, 58vw"
                     priority={false}
                       className="select-none object-contain opacity-[0.95] scale-[1.55]"
                   />
@@ -491,26 +494,26 @@ export function ServicesSection() {
               </div>
             </div>
 
-            <div className="relative z-10 grid gap-10 px-8 py-10 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:gap-12 md:px-12 md:py-12">
+            <div className="relative z-10 grid gap-6 px-5 py-7 sm:gap-8 sm:px-7 sm:py-9 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:gap-10 md:px-10 md:py-10 lg:gap-12 lg:px-12 lg:py-12">
               <div className="flex flex-col justify-center">
                 <h3
-                  className="text-[22px] font-[560] tracking-[0.02em] text-[#F0ECE4] sm:text-[26px]"
+                  className="text-[20px] sm:text-[22px] lg:text-[26px] font-[560] tracking-[0.02em] text-[#F0ECE4] leading-[1.2]"
                   style={{ fontFamily: "var(--font-display), ui-serif, Georgia, serif" }}
                 >
                   Nutraceutical Protocols
                 </h3>
-                <p className="mt-4 text-[14px] leading-[1.9] text-[#C2BDB5] sm:text-[15px]">
+                <p className="mt-3 sm:mt-4 text-[13px] sm:text-[14px] lg:text-[15px] leading-[1.9] text-[#C2BDB5]">
                   Clinically guided supplementation using high-quality, bioavailable
                   formulations chosen according to your metabolic profile.
                 </p>
 
-                <div className="mt-6 flex flex-wrap gap-2.5">
+                <div className="mt-5 sm:mt-6 flex flex-wrap gap-2 sm:gap-2.5">
                   <MetricPill label="APPROACH" value="LAB-INFORMED • EVIDENCE-LED" />
                   <MetricPill label="DELIVERY" value="CURATED STACKS & CYCLES" />
                 </div>
                 <Link
                   href="/services/nutraceuticals"
-                  className="mt-5 inline-flex w-fit items-center rounded-full border border-[#C8A96E]/38 bg-gradient-to-r from-[#C8A96E]/18 to-[#A07840]/15 px-4 py-2 text-[11px] tracking-[0.14em] text-[#F0ECE4] transition-all hover:border-[#E2C98A]/40 hover:shadow-[0_0_24px_rgba(200,169,110,0.14)]"
+                  className="mt-4 sm:mt-5 inline-flex w-full sm:w-fit items-center justify-center sm:justify-start rounded-full border border-[#C8A96E]/38 bg-gradient-to-r from-[#C8A96E]/18 to-[#A07840]/15 px-4 py-2.5 min-h-11 text-[10px] sm:text-[11px] tracking-[0.14em] text-[#F0ECE4] transition-all hover:border-[#E2C98A]/40 hover:shadow-[0_0_24px_rgba(200,169,110,0.14)]"
                 >
                   LEARN MORE
                 </Link>
@@ -518,7 +521,7 @@ export function ServicesSection() {
 
               <div className="relative">
                 <div className="relative mx-auto flex h-full max-w-[420px] items-center justify-center">
-                  <div className="relative min-h-[260px] w-full sm:min-h-[320px]" />
+                  <div className="relative min-h-[200px] w-full sm:min-h-[260px] md:min-h-[320px]" />
                 </div>
               </div>
             </div>
@@ -526,23 +529,24 @@ export function ServicesSection() {
 
           {/* 4. Adult Vaccination Programme */}
           <motion.article
-            initial={reduce ? undefined : { opacity: 0, y: 16, filter: "blur(12px)" }}
-            whileInView={reduce ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.9, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-[28px] border border-[#C8A96E]/18 bg-[#0f4842]/65 shadow-[0_26px_90px_rgba(0,0,0,0.32)] backdrop-blur-sm will-change-transform"
+            initial={reduce ? undefined : { opacity: 0, y: 16 }}
+            whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3, margin: "100px" }}
+            transition={{ duration: 0.7, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
+            className="relative overflow-hidden rounded-[28px] border border-[#C8A96E]/18 bg-[#0f4842]/65 shadow-[0_26px_90px_rgba(0,0,0,0.32)] backdrop-blur-sm"
+            style={{ contentVisibility: "auto" }}
           >
             <div className="pointer-events-none absolute inset-0">
               <div className="absolute -right-8 top-[-24px] h-[360px] w-[360px] rounded-full bg-[#C8A96E]/05 blur-3xl" />
               <div className="absolute -left-16 bottom-[-100px] h-[420px] w-[420px] rounded-full bg-[#001a1a]/42 blur-3xl" />
               {/* virus image as a background layer (left side) */}
-              <div className="absolute inset-y-0 left-0 w-[58%] md:w-[54%]">
+              <div className="absolute inset-y-0 left-0 w-[68%] sm:w-[58%] md:w-[54%]">
                 <div className="relative h-full w-full">
                   <Image
                     src={virusImg}
                     alt=""
                     fill
-                    sizes="(min-width: 1024px) 52vw, 100vw"
+                    sizes="(max-width: 640px) 68vw, (max-width: 768px) 58vw, 54vw"
                     priority={false}
                     className="select-none object-contain object-left-center opacity-[0.9] scale-[1.08] drop-shadow-[0_30px_80px_rgba(0,0,0,0.48)]"
                   />
@@ -550,29 +554,29 @@ export function ServicesSection() {
               </div>
             </div>
 
-            <div className="relative z-10 grid gap-10 px-8 py-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] md:gap-12 md:px-12 md:py-12">
-              <div className="relative min-h-[260px] sm:min-h-[320px]" />
+            <div className="relative z-10 grid gap-6 px-5 py-7 sm:gap-8 sm:px-7 sm:py-9 md:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] md:gap-10 md:px-10 md:py-10 lg:gap-12 lg:px-12 lg:py-12">
+              <div className="relative min-h-[200px] sm:min-h-[260px] md:min-h-[320px]" />
 
               <div className="flex flex-col justify-center">
                 <h3
-                  className="text-[22px] font-[560] tracking-[0.02em] text-[#F0ECE4] sm:text-[26px]"
+                  className="text-[20px] sm:text-[22px] lg:text-[26px] font-[560] tracking-[0.02em] text-[#F0ECE4] leading-[1.2]"
                   style={{ fontFamily: "var(--font-display), ui-serif, Georgia, serif" }}
                 >
                   Adult Vaccination Programme
                 </h3>
-                <p className="mt-4 text-[14px] leading-[1.9] text-[#C2BDB5] sm:text-[15px]">
+                <p className="mt-3 sm:mt-4 text-[13px] sm:text-[14px] lg:text-[15px] leading-[1.9] text-[#C2BDB5]">
                   Evidence-based adult immunization pathways designed for long-term
                   preventive health, travel protection, and risk-based booster planning
                   under clinician supervision.
                 </p>
 
-                <div className="mt-6 flex flex-wrap gap-2.5">
+                <div className="mt-5 sm:mt-6 flex flex-wrap gap-2 sm:gap-2.5">
                   <MetricPill label="FOCUS" value="PREVENTION • IMMUNITY • LONGEVITY" />
                   <MetricPill label="DELIVERY" value="SCHEDULED CLINIC VACCINATION PLANS" />
                 </div>
                 <Link
-                  href="#contacts"
-                  className="mt-5 inline-flex w-fit items-center rounded-full border border-[#C8A96E]/38 bg-gradient-to-r from-[#C8A96E]/18 to-[#A07840]/15 px-4 py-2 text-[11px] tracking-[0.14em] text-[#F0ECE4] transition-all hover:border-[#E2C98A]/40 hover:shadow-[0_0_24px_rgba(200,169,110,0.14)]"
+                  href="/services/adult-vaccination"
+                  className="mt-4 sm:mt-5 inline-flex w-full sm:w-fit items-center justify-center sm:justify-start rounded-full border border-[#C8A96E]/38 bg-gradient-to-r from-[#C8A96E]/18 to-[#A07840]/15 px-4 py-2.5 min-h-11 text-[10px] sm:text-[11px] tracking-[0.14em] text-[#F0ECE4] transition-all hover:border-[#E2C98A]/40 hover:shadow-[0_0_24px_rgba(200,169,110,0.14)]"
                 >
                   ENQUIRE NOW
                 </Link>

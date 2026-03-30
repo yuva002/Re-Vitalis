@@ -25,7 +25,7 @@ export function AboutSection() {
     <section
       id="about"
       className="relative overflow-hidden"
-      style={{ zIndex: 1, contain: "layout style" }}
+      style={{ zIndex: 1, contentVisibility: "auto" }}
       aria-labelledby="about-heading"
     >
       <div className="pointer-events-none absolute inset-0">
@@ -33,27 +33,27 @@ export function AboutSection() {
         <div className="absolute -right-48 bottom-[-140px] h-[560px] w-[560px] rounded-full bg-[#134742]/55 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto w-full max-w-[1480px] px-6 py-16 sm:py-24">
+      <div className="relative mx-auto w-full max-w-[1480px] px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
         <div className="relative">
-          <div className="grid items-stretch gap-10 md:grid-cols-[minmax(520px,44%)_1fr] md:gap-14">
+          <div className="grid items-stretch gap-8 sm:gap-10 md:grid-cols-[minmax(520px,44%)_1fr] md:gap-14">
             <motion.div
-              initial={reduce ? undefined : { opacity: 0, x: -18, filter: "blur(10px)" }}
-              whileInView={reduce ? undefined : { opacity: 1, x: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+              initial={reduce ? undefined : { opacity: 0, x: -18 }}
+              whileInView={reduce ? undefined : { opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.35, margin: "80px" }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="relative isolate"
             >
               {/* portrait + floats are contained to this column */}
-              <div className="relative flex h-full translate-y-[-56px] items-center justify-center">
+              <div className="relative flex h-full translate-y-[-24px] sm:translate-y-[-56px] items-center justify-center">
                 {/* portrait (transparent background) */}
-                <div className="relative w-full min-h-[620px] md:min-h-[700px]">
+                <div className="relative w-full min-h-[480px] sm:min-h-[620px] md:min-h-[700px]">
                   <Image
                     src={drRamana}
                     alt="Dr. Ramana Naidu Darmisetty"
                     fill
-                    sizes="(min-width: 800px) 60vw, 100vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 44vw"
                     priority={false}
-                    className="select-none object-contain drop-shadow-[0_40px_95px_rgba(0,0,0,0.45)] md:scale-[1.32]"
+                    className="select-none object-contain drop-shadow-[0_40px_95px_rgba(0,0,0,0.45)] scale-[1.1] sm:scale-[1.2] md:scale-[1.32]"
                   />
                 </div>
               </div>
@@ -125,25 +125,25 @@ export function AboutSection() {
             </motion.div>
 
             <motion.div
-              initial={reduce ? undefined : { opacity: 0, y: 14, filter: "blur(10px)" }}
-              whileInView={reduce ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ duration: 0.9, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+              initial={reduce ? undefined : { opacity: 0, y: 14 }}
+              whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.35, margin: "80px" }}
+              transition={{ duration: 0.75, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
               className="relative"
             >
-              <p className="text-[12px] font-[560] tracking-[0.28em] text-[#C8A96E]">
+              <p className="text-[11px] sm:text-[12px] font-[560] tracking-[0.28em] text-[#C8A96E]">
                 ABOUT US
               </p>
-              <div className="home-jewel-rule mt-5 max-w-md" aria-hidden />
+              <div className="home-jewel-rule mt-4 sm:mt-5 max-w-md" aria-hidden />
               <h2
                 id="about-heading"
-                className="home-jewel-heading mt-5 text-balance text-[30px] font-[560] leading-[1.08] tracking-[0.02em] sm:text-[40px]"
+                className="home-jewel-heading mt-4 sm:mt-5 text-balance text-[24px] sm:text-[30px] lg:text-[40px] font-[560] leading-[1.08] tracking-[0.02em]"
                 style={{ fontFamily: "var(--font-display), ui-serif, Georgia, serif" }}
               >
                 A New Era of Personalized Metabolic Care
               </h2>
 
-              <div className="mt-6 space-y-4 text-[14px] leading-[1.95] text-[#C2BDB5] sm:text-[15px]">
+              <div className="mt-5 sm:mt-6 space-y-3 sm:space-y-4 text-[13px] sm:text-[14px] lg:text-[15px] leading-[1.95] text-[#C2BDB5]">
                 <p>
                   Modern health problems are rarely isolated. Fatigue, weight gain,
                   insulin resistance, inflammation, poor recovery, and cardiovascular
@@ -165,18 +165,18 @@ export function AboutSection() {
               <motion.div
                 initial={reduce ? undefined : { opacity: 0, y: 10 }}
                 whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.45 }}
-                transition={{ duration: 0.7, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-                className="mt-8 inline-flex items-center gap-3 rounded-full border border-[#C8A96E]/25 bg-[#0f4842]/85 px-5 py-3 shadow-[0_20px_60px_rgba(0,0,0,0.22)] backdrop-blur-xl"
+                viewport={{ once: true, amount: 0.45, margin: "60px" }}
+                transition={{ duration: 0.6, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+                className="mt-6 sm:mt-8 inline-flex flex-wrap items-center gap-3 rounded-full border border-[#C8A96E]/25 bg-[#0f4842]/85 px-4 py-2.5 sm:px-5 sm:py-3 shadow-[0_20px_60px_rgba(0,0,0,0.22)] backdrop-blur-xl"
               >
                 <span className="h-2 w-2 rounded-full bg-[#E2C98A]/80 shadow-[0_0_10px_rgba(226,201,138,0.40)]" aria-hidden="true" />
-                <p className="text-[12px] font-[560] tracking-[0.14em] text-[#DDD8D0]">
+                <p className="text-[10px] sm:text-[12px] font-[560] tracking-[0.14em] text-[#DDD8D0]">
                   ROOT-CAUSE • BIOMARKERS • LONG-TERM VITALITY
                 </p>
               </motion.div>
               <Link
                 href="/about-doctor"
-                className="mt-9 inline-flex md:translate-x-6 items-center rounded-full border border-[#C8A96E]/38 bg-gradient-to-r from-[#C8A96E]/14 to-[#A07840]/16 px-5 py-2 text-[12px] tracking-[0.17em] text-[#F0ECE4] transition-all hover:border-[#E2C98A]/55 hover:shadow-[0_0_28px_rgba(200,169,110,0.18)]"
+                className="mt-6 sm:mt-9 inline-flex w-full sm:w-auto items-center justify-center min-h-11 md:translate-x-6 rounded-full border border-[#C8A96E]/38 bg-gradient-to-r from-[#C8A96E]/14 to-[#A07840]/16 px-5 py-2.5 text-[11px] sm:text-[12px] tracking-[0.17em] text-[#F0ECE4] transition-all hover:border-[#E2C98A]/55 hover:shadow-[0_0_28px_rgba(200,169,110,0.18)]"
               >
                 ABOUT US
               </Link>

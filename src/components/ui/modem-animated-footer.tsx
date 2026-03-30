@@ -42,6 +42,15 @@ export const Footer = ({
   const HEADING  = "#c8b89a"          // gold-mist for column headings
   const DIVIDER  = "rgba(200,184,154,0.18)"  // subtle gold-tinted divider
 
+  // Always shown across the site (requested by you).
+  const branches = [
+    "AS Rao Nagar",
+    "Jublee Hills",
+    "Dubai, UAE",
+    "ABUDABI",
+    "Malasia",
+  ];
+
   return (
     <section className={cn("relative w-full mt-0 overflow-hidden", className)}>
       <footer
@@ -49,28 +58,28 @@ export const Footer = ({
         className="relative mt-20 scroll-mt-24"
         style={{ background: BG, borderTop: `1px solid ${DIVIDER}` }}
       >
-        <div className="max-w-7xl flex flex-col justify-between mx-auto min-h-[30rem] sm:min-h-[35rem] md:min-h-[40rem] relative p-4 py-10">
+        <div className="max-w-7xl flex flex-col justify-between mx-auto min-h-[35rem] sm:min-h-[39rem] md:min-h-[46.5rem] relative p-4 py-8 sm:py-10">
 
           {/* Top section */}
-          <div className="flex flex-col mb-12 sm:mb-20 md:mb-0 w-full">
+          <div className="flex flex-col mb-10 sm:mb-16 md:mb-0 w-full">
             <div className="w-full flex flex-col items-center">
               {/* Brand name + description */}
               <div className="space-y-2 flex flex-col items-center flex-1">
-                <span className="text-3xl font-bold tracking-tight" style={{ color: FG }}>
+                <span className="text-[26px] sm:text-3xl font-bold tracking-tight" style={{ color: FG }}>
                   {brandName}
                 </span>
-                <p className="font-medium text-center w-full max-w-sm sm:w-96 px-4 sm:px-0 leading-relaxed" style={{ color: MUTED }}>
+                <p className="font-medium text-center text-[13px] sm:text-base w-full max-w-sm sm:max-w-md px-4 sm:px-0 leading-relaxed" style={{ color: MUTED }}>
                   {brandDescription}
                 </p>
               </div>
 
-              {/* Link groups */}
-              {linkGroups.length > 0 && (
-                <div className="mt-10 flex flex-col sm:flex-row items-center sm:items-start gap-10 sm:gap-20">
-                  {linkGroups.map((group, gi) => (
+              {/* Link groups / Contact / Branches (always show branches, even if linkGroups is empty) */}
+              <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12 md:gap-20">
+                {linkGroups.length > 0 &&
+                  linkGroups.map((group, gi) => (
                     <div key={gi} className="flex flex-col items-center sm:items-start gap-2">
                       <p
-                        className="text-[11px] font-[700] tracking-[0.22em] uppercase mb-1"
+                        className="text-[10px] sm:text-[11px] font-[700] tracking-[0.22em] uppercase mb-1"
                         style={{ color: HEADING }}
                       >
                         {group.heading}
@@ -79,7 +88,7 @@ export const Footer = ({
                         <Link
                           key={li}
                           href={link.href}
-                          className="text-sm font-medium transition-colors duration-300"
+                          className="min-h-8 inline-flex items-center text-[13px] sm:text-sm font-medium transition-colors duration-300"
                           style={{ color: MUTED }}
                           onMouseEnter={e => (e.currentTarget.style.color = FG)}
                           onMouseLeave={e => (e.currentTarget.style.color = MUTED)}
@@ -90,43 +99,61 @@ export const Footer = ({
                     </div>
                   ))}
 
-                  {/* Contact info */}
-                  {contactItems.length > 0 && (
-                    <div className="flex flex-col items-center sm:items-start gap-2">
-                      <p
-                        className="text-[11px] font-[700] tracking-[0.22em] uppercase mb-1"
-                        style={{ color: HEADING }}
+                {/* Contact info */}
+                {contactItems.length > 0 && (
+                  <div className="flex flex-col items-center sm:items-start gap-2">
+                    <p
+                      className="text-[10px] sm:text-[11px] font-[700] tracking-[0.22em] uppercase mb-1"
+                      style={{ color: HEADING }}
+                    >
+                      Contact
+                    </p>
+                    {contactItems.map((item, idx) => (
+                      <Link
+                        key={idx}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 min-h-8 text-[13px] sm:text-sm font-medium transition-colors duration-300"
+                        style={{ color: MUTED }}
+                        onMouseEnter={e => (e.currentTarget.style.color = FG)}
+                        onMouseLeave={e => (e.currentTarget.style.color = MUTED)}
                       >
-                        Contact
-                      </p>
-                      {contactItems.map((item, idx) => (
-                        <Link
-                          key={idx}
-                          href={item.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-sm font-medium transition-colors duration-300"
-                          style={{ color: MUTED }}
-                          onMouseEnter={e => (e.currentTarget.style.color = FG)}
-                          onMouseLeave={e => (e.currentTarget.style.color = MUTED)}
-                        >
-                          <span className="w-4 h-4">{item.icon}</span>
-                          {item.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                        <span className="w-4 h-4">{item.icon}</span>
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+
+                {/* Branches */}
+                <div className="flex flex-col items-center sm:items-start gap-2">
+                  <p
+                    className="text-[10px] sm:text-[11px] font-[700] tracking-[0.22em] uppercase mb-1"
+                    style={{ color: HEADING }}
+                  >
+                    Branches
+                  </p>
+                  {branches.map((b, idx) => (
+                    <span
+                      key={idx}
+                      className="min-h-8 inline-flex items-center text-[13px] sm:text-sm font-medium"
+                      style={{ color: MUTED }}
+                    >
+                      {b}
+                    </span>
+                  ))}
                 </div>
-              )}
+              </div>
             </div>
           </div>
 
           {/* Bottom: copyright */}
-          <div className="mt-20 md:mt-24 flex flex-col gap-2 md:gap-1 items-center justify-center md:flex-row md:items-center md:justify-between px-4 md:px-0">
-            <p className="text-sm text-center md:text-left" style={{ color: MUTED }}>
+          <div className="mt-16 sm:mt-20 md:mt-24 flex flex-col gap-2 md:gap-1 items-center justify-center md:flex-row md:items-center md:justify-between px-4 md:px-0">
+            <p className="text-[12px] sm:text-sm text-center md:text-left" style={{ color: MUTED }}>
               ©{new Date().getFullYear()} {legalEntityName}. All rights reserved.
             </p>
-            <p className="text-sm italic" style={{ color: HEADING }}>{tagline}</p>
+            <p className="text-[12px] sm:text-sm italic" style={{ color: HEADING }}>{tagline}</p>
           </div>
         </div>
 
@@ -146,27 +173,28 @@ export const Footer = ({
         </div>
 
         {/* Bottom logo — floating, no background box, very large */}
-        <div className="absolute -bottom-16 md:-bottom-24 left-1/2 -translate-x-1/2 z-10 drop-shadow-[0_0px_48px_rgba(200,184,154,0.65)] hover:scale-105 transition-transform duration-300">
+        <div className="absolute -bottom-12 sm:-bottom-16 md:-bottom-24 left-1/2 -translate-x-1/2 z-10 drop-shadow-[0_0px_48px_rgba(200,184,154,0.65)] hover:scale-105 transition-transform duration-300">
           <Image
             src="/Re-Vitalis Logo.png"
             alt="Re-Vitalis Logo"
             width={448}
             height={448}
-            className="w-40 sm:w-64 md:w-[28rem] h-40 sm:h-64 md:h-[28rem] object-contain"
+            className="w-32 sm:w-48 md:w-64 lg:w-[28rem] h-32 sm:h-48 md:h-64 lg:h-[28rem] object-contain"
             priority={false}
           />
         </div>
 
         {/* Divider line above logo */}
         <div
-          className="absolute bottom-32 sm:bottom-34 h-px w-full left-1/2 -translate-x-1/2"
+          className="absolute bottom-28 sm:bottom-32 md:bottom-34 h-px w-full left-1/2 -translate-x-1/2"
           style={{ background: `linear-gradient(to right, transparent, ${DIVIDER}, transparent)` }}
         />
 
         {/* Bottom shadow fade */}
         <div
-          className="absolute bottom-28 w-full h-28 blur-[1em]"
-          style={{ background: `linear-gradient(to top, ${BG}, ${BG}cc, transparent)` }}
+          className="absolute bottom-24 sm:bottom-28 w-full h-24 sm:h-28 blur-[1em]"
+          // Keep the footer background opaque so underlying page color doesn't "show through".
+          style={{ background: `linear-gradient(to top, ${BG}, ${BG}cc, ${BG}aa)` }}
         />
       </footer>
     </section>

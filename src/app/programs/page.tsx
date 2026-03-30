@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, LineChart, Droplets, Pill, Database, Dna, UserRound, Network, MessageCircle, Globe, Phone } from "lucide-react";
+import { ArrowRight, LineChart, Droplets, Pill, Syringe, Database, Dna, UserRound, Network, MessageCircle, Globe, Phone } from "lucide-react";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/ui/modem-animated-footer";
 import { FAQSection } from "@/components/FAQSection";
@@ -64,6 +64,13 @@ const programsSchema = {
       position: 3,
       name: "Platinum Program",
       description: "The complete Re-Vitalis experience with unlimited sessions, priority access, exclusive perks, and extended physician support.",
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      name: "Adult Vaccination Programme",
+      description:
+        "Physician-guided review of vaccination history and risk factors, with scheduling aligned to current immunization guidance.",
     },
   ],
 };
@@ -134,7 +141,7 @@ export default function ProgramsPage() {
             <h2 className="mb-6 font-[var(--font-display)] text-5xl text-[#061b0e]">Our Foundational Pillars</h2>
             <div className="h-1 w-24 bg-[#e9c176]"></div>
           </div>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-4">
             <div className="group flex min-h-[500px] flex-col justify-between bg-[#f1f4f2] p-10 transition-colors duration-500 hover:bg-[#ebefed]">
               <div>
                 <div className="mb-12 flex items-start justify-between">
@@ -199,6 +206,29 @@ export default function ProgramsPage() {
               <Link
                 href="/services/nutraceuticals"
                 className="btn-premium btn-premium-ghost inline-flex w-fit items-center gap-2 px-4 py-2 text-[10px] tracking-[0.14em] text-[#061b0e]"
+              >
+                Learn More <ArrowRight className="h-4 w-4" aria-hidden />
+              </Link>
+            </div>
+
+            <div className="group flex min-h-[500px] flex-col justify-between bg-[#061b0e] p-10 text-white">
+              <div>
+                <div className="mb-12 flex items-start justify-between">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#1b3022]">
+                    <Syringe className="h-8 w-8 text-[#e9c176]" />
+                  </div>
+                  <span className="text-xs tracking-widest text-[#819986]">04 / PROGRAM</span>
+                </div>
+                <h3 className="mb-6 font-[var(--font-display)] text-3xl">Adult Vaccination Programme</h3>
+                <ul className="mb-10 space-y-4 text-sm text-[#819986]">
+                  <li className="flex items-center gap-3"><span className="h-1.5 w-1.5 rounded-full bg-[#e9c176]"></span>History & risk review</li>
+                  <li className="flex items-center gap-3"><span className="h-1.5 w-1.5 rounded-full bg-[#e9c176]"></span>Guideline-aligned scheduling</li>
+                  <li className="flex items-center gap-3"><span className="h-1.5 w-1.5 rounded-full bg-[#e9c176]"></span>Clinical administration</li>
+                </ul>
+              </div>
+              <Link
+                href="/services/adult-vaccination"
+                className="btn-premium btn-premium-ghost inline-flex w-fit items-center gap-2 px-4 py-2 text-[10px] tracking-[0.14em] text-[#e9c176]"
               >
                 Learn More <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useMotionValueEvent, useScroll } from "motion/react";
 
 const LINE_D =
@@ -16,6 +16,33 @@ function smoothstep(edge0: number, edge1: number, x: number) {
   return t * t * (3 - 2 * t);
 }
 
+/** Find t in [tMin, tMax] (0–1 along path length) where the path is closest to (qx, qy). */
+function closestTOnPathSegment(
+  path: SVGPathElement,
+  qx: number,
+  qy: number,
+  tMin: number,
+  tMax: number,
+  samples = 96,
+) {
+  const len = path.getTotalLength();
+  if (!len) return (tMin + tMax) / 2;
+  let bestT = tMin;
+  let bestD = Infinity;
+  for (let i = 0; i <= samples; i++) {
+    const t = tMin + ((tMax - tMin) * i) / samples;
+    const pt = path.getPointAtLength(len * t);
+    const dx = pt.x - qx;
+    const dy = pt.y - qy;
+    const d = dx * dx + dy * dy;
+    if (d < bestD) {
+      bestD = d;
+      bestT = t;
+    }
+  }
+  return bestT;
+}
+
 type Step = {
   n: 1 | 2 | 3 | 4;
   title: string;
@@ -25,16 +52,30 @@ type Step = {
   digit: { leftOffset: string; topOffset: string };
 };
 
+/** Pixel nudge so cards sit beside the path / clear the bottom slogan (must match scroll handler). */
+function getCardPixelOffsets(n: Step["n"]): { x: number; y: number } {
+  switch (n) {
+    case 2:
+      return { x: -20, y: -20 };
+    case 3:
+      return { x: -2, y: -5 };
+    case 4:
+      return { x: -195, y: -155 };
+    default:
+      return { x: 0, y: 0 };
+  }
+}
+
 function StepCard({ step }: { step: Pick<Step, "n" | "title" | "body"> }) {
   return (
-    <div className="relative rounded-[22px] border border-[#C8A96E]/22 bg-[#11524c]/90 px-6 py-5 shadow-[0_22px_70px_rgba(0,0,0,0.30)] backdrop-blur-xl">
+    <div className="relative rounded-xl sm:rounded-[22px] border border-[#C8A96E]/22 bg-[#11524c]/90 px-5 py-4 sm:px-6 sm:py-5 shadow-[0_22px_70px_rgba(0,0,0,0.30)] backdrop-blur-xl">
       <div className="flex items-center gap-3">
         <div>
-          <p className="text-[12px] font-[560] tracking-[0.22em] text-[#C8A96E]">
+          <p className="text-[11px] sm:text-[12px] font-[560] tracking-[0.22em] text-[#C8A96E]">
             STEP {step.n}
           </p>
           <p
-            className="text-[25px] font-[600] tracking-[0.02em] text-[#F0ECE4]"
+            className="text-[22px] sm:text-[25px] font-[600] tracking-[0.02em] text-[#F0ECE4] leading-[1.15]"
             style={{
               fontFamily:
                 "var(--font-display), ui-serif, Georgia, serif",
@@ -44,7 +85,7 @@ function StepCard({ step }: { step: Pick<Step, "n" | "title" | "body"> }) {
           </p>
         </div>
       </div>
-      <p className="mt-3 text-[13px] leading-[1.85] text-[#C2BDB5]">{step.body}</p>
+      <p className="mt-3 text-[13px] sm:text-[13px] leading-[1.85] text-[#C2BDB5]">{step.body}</p>
     </div>
   );
 }
@@ -62,25 +103,44 @@ export function HealthPlanSection() {
   const dotRefs = useRef<(SVGCircleElement | null)[]>([null, null, null, null]);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([null, null, null, null]);
 
-  // Dot positions extracted from SVG path (one-time measurement after mount)
-  const nodesRef = useRef<{ x: number; y: number }[]>([
-    { x: 120, y: 415 },
-    { x: 360, y: 295 },
-    { x: 520, y: 240 },
-    { x: 865, y: 135 },
-  ]);
-  const svgPathRef = useRef<SVGPathElement | null>(null);
+  /** Geometry only (no `pathLength`) — reliable getTotalLength / getPointAtLength for dot placement */
+  const measurePathRef = useRef<SVGPathElement | null>(null);
 
-  useEffect(() => {
-    if (!svgPathRef.current) return;
-    const el = svgPathRef.current;
+  /**
+   * Dots: steps 2 & 3 snapped onto the line. Card 3 uses the same point as dot 3 so it sits by the line.
+   * Card 4: path end (unchanged).
+   */
+  const [measured, setMeasured] = useState<{
+    dots: { x: number; y: number }[];
+    card4: { x: number; y: number };
+  } | null>(null);
+
+  useLayoutEffect(() => {
+    const el = measurePathRef.current;
+    if (!el) return;
     const total = el.getTotalLength();
     if (!total) return;
-    const pAt = (t: number) => {
-      const pt = el.getPointAtLength(total * t);
+
+    const pAt = (u: number) => {
+      const pt = el.getPointAtLength(total * u);
       return { x: pt.x, y: pt.y };
     };
-    nodesRef.current = [pAt(0), pAt(1 / 3), pAt(2 / 3), pAt(1)];
+
+    // ViewBox targets — only for placing dots 2 & 3 on the curve (near Analyze / Personalize)
+    const target2 = { x: 195, y: 108 };
+    const target3 = { x: 410, y: 292 };
+
+    let t2 = closestTOnPathSegment(el, target2.x, target2.y, 0.08, 0.42);
+    let t3 = closestTOnPathSegment(el, target3.x, target3.y, 0.48, 0.88);
+    if (t2 >= t3) {
+      t3 = Math.min(0.92, t2 + 0.1);
+    }
+
+    const dots = [pAt(0), pAt(t2), pAt(t3), pAt(1)];
+    setMeasured({
+      dots,
+      card4: pAt(1),
+    });
   }, []);
 
   const steps = useMemo<Step[]>(
@@ -98,7 +158,7 @@ export function HealthPlanSection() {
         title: "Analyze",
         body: "Metabolic mapping, nutritional evaluation, and biomarker interpretation",
         t: 1 / 3,
-        card: { left: "18%", top: "18%", width: 320, z: 5 },
+        card: { left: "14%", top: "24%", width: 320, z: 5 },
         digit: { leftOffset: "-22px", topOffset: "-18px" },
       },
       {
@@ -106,7 +166,7 @@ export function HealthPlanSection() {
         title: "Personalize",
         body: "A customized therapy plan combining the right interventions for your needs",
         t: 2 / 3,
-        card: { left: "40%", top: "52%", width: 390, z: 4 },
+        card: { left: "10%", top: "52%", width: 390, z: 4 },
         digit: { leftOffset: "-26px", topOffset: "-20px" },
       },
       {
@@ -142,26 +202,26 @@ export function HealthPlanSection() {
       const card = cardRefs.current[i];
       if (card) {
         card.style.opacity = String(op);
-        const xOffset = s.n === 3 ? -10 : s.n === 4 ? -155 : 0;
-        const yOffset = s.n === 3 ? 34 : s.n === 4 ? -155 : 0;
-        card.style.transform = `translateX(${xOffset}px) translateY(${fadeY + yOffset}px)`;
+        const { x: ox, y: oy } = getCardPixelOffsets(s.n);
+        card.style.transform = `translateX(${ox}px) translateY(${fadeY + oy}px)`;
       }
     });
   });
 
   return (
-    <section ref={outerRef} className="relative h-[300vh] bg-transparent" style={{ zIndex: 1 }}>
-      <div className="sticky top-0 h-screen min-h-0 overflow-hidden">
+    <section ref={outerRef} className="relative lg:h-[300vh] bg-transparent" style={{ zIndex: 1 }}>
+      <div className="lg:sticky lg:top-0 lg:h-screen lg:min-h-0 lg:overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(85%_55%_at_35%_5%,rgba(255,236,210,0.08),transparent_58%),radial-gradient(75%_65%_at_100%_35%,rgba(20,90,85,0.12),transparent_55%)]" />
         </div>
 
-        <div className="relative mx-auto h-full w-full max-w-[1480px] px-6 sm:px-10">
-          <div className="pt-16 sm:pt-20">
+        <div className="relative mx-auto h-full w-full max-w-[1480px] px-4 py-12 sm:px-6 sm:py-16 lg:px-10">
+          {/* z-index keeps title copy above the absolute SVG/card layer; extra bottom padding clears card 2 (Analyze) */}
+          <div className="relative z-20 lg:pt-12 lg:pb-8 lg:pr-4">
             <p className="text-[11px] font-[560] tracking-[0.28em] text-[#C8A96E]">YOUR JOURNEY</p>
             <div className="home-jewel-rule mt-3 max-w-lg" aria-hidden />
             <h2
-              className="home-jewel-heading mt-4 text-[34px] font-[560] leading-[1.08] tracking-[0.02em] sm:text-[44px] text-balance"
+              className="home-jewel-heading mt-4 text-[26px] sm:text-[34px] lg:text-[44px] font-[560] leading-[1.08] tracking-[0.02em] text-balance"
               style={{
                 fontFamily:
                   "var(--font-display), ui-serif, Georgia, serif",
@@ -169,13 +229,29 @@ export function HealthPlanSection() {
             >
               Your Health Plan, Built Around You
             </h2>
-            <p className="mt-4 max-w-[72ch] text-[14px] leading-[1.95] text-[#C2BDB5] sm:text-[15px]">
+            <p className="mt-4 max-w-[72ch] text-[13px] sm:text-[14px] lg:text-[15px] leading-[1.95] text-[#C2BDB5]">
               Every patient journey at Re-Vitalis begins with understanding the individual behind the lab
               report. We evaluate your health through a structured framework:
             </p>
           </div>
 
-          <div className="absolute left-0 right-0 bottom-0 top-[150px]">
+          {/* Mobile: Simple vertical stack */}
+          <div className="lg:hidden mt-8 space-y-6">
+            {steps.map((s) => (
+              <div key={s.n}>
+                <StepCard step={s} />
+              </div>
+            ))}
+            <Link
+              href="/programs"
+              className="mt-6 inline-flex w-full sm:w-auto items-center justify-center min-h-11 rounded-full border border-[#C8A96E]/38 bg-gradient-to-r from-[#C8A96E]/14 to-[#A07840]/16 px-5 py-2.5 text-[11px] tracking-[0.17em] text-[#F0ECE4] transition-all hover:border-[#E2C98A]/55 hover:shadow-[0_0_28px_rgba(200,169,110,0.18)]"
+            >
+              EXPLORE OUR PROGRAMS
+            </Link>
+          </div>
+
+          {/* Desktop: SVG scroll animation */}
+          <div className="hidden lg:block absolute inset-x-0 bottom-0 z-10 lg:top-[228px]">
             <svg
               viewBox="0 0 1000 560"
               className="absolute inset-0 h-full w-full"
@@ -197,6 +273,17 @@ export function HealthPlanSection() {
                 </filter>
               </defs>
 
+              {/* True geometry for dot placement (no pathLength normalization) */}
+              <path
+                ref={measurePathRef}
+                d={LINE_D}
+                fill="none"
+                stroke="none"
+                opacity={0}
+                pointerEvents="none"
+                aria-hidden
+              />
+
               {/* base track path */}
               <path
                 d={LINE_D}
@@ -205,7 +292,6 @@ export function HealthPlanSection() {
                 strokeWidth="5"
                 strokeLinecap="round"
                 opacity="0.18"
-                ref={svgPathRef}
                 pathLength={1}
               />
 
@@ -224,36 +310,40 @@ export function HealthPlanSection() {
                 pathLength={1}
               />
 
-              {/* dots — initial opacity set per step; mutated via dotRefs */}
-              {steps.map((s, i) => (
-                <circle
-                  key={s.n}
-                  ref={(el) => { dotRefs.current[i] = el; }}
-                  cx={nodesRef.current[i]?.x ?? 0}
-                  cy={nodesRef.current[i]?.y ?? 0}
-                  r={s.n === 1 || s.n === 4 ? 7 : 6}
-                  fill="#C8A96E"
-                  style={{ opacity: s.n === 1 ? 1 : 0 }}
-                />
-              ))}
+              {/* dots — on-path positions from layout measure; opacity driven by scroll */}
+              {measured &&
+                steps.map((s, i) => (
+                  <circle
+                    key={s.n}
+                    ref={(el) => {
+                      dotRefs.current[i] = el;
+                    }}
+                    cx={measured.dots[i]?.x ?? 0}
+                    cy={measured.dots[i]?.y ?? 0}
+                    r={s.n === 1 || s.n === 4 ? 7 : 6}
+                    fill="#C8A96E"
+                    style={{ opacity: s.n === 1 ? 1 : 0 }}
+                  />
+                ))}
             </svg>
 
-            {/* Cards — left/top are static; opacity+transform mutated via cardRefs */}
+            {/* Cards 1–2: % layout. Card 3: anchored at third dot. Card 4: path end. */}
             {steps.map((s, i) => {
-              const nodes = nodesRef.current;
-              const pos = nodes[i] ?? { x: 0, y: 0 };
-
+              const dot3 = measured?.dots[2];
               const left =
-                s.n === 3 || s.n === 4
-                  ? `${(pos.x / 1000) * 100}%`
-                  : s.card.left;
+                s.n === 3 && dot3
+                  ? `${(dot3.x / 1000) * 100}%`
+                  : s.n === 4 && measured
+                    ? `${(measured.card4.x / 1000) * 100}%`
+                    : s.card.left;
               const top =
-                s.n === 3 || s.n === 4
-                  ? `${(pos.y / 560) * 100}%`
-                  : s.card.top;
+                s.n === 3 && dot3
+                  ? `${(dot3.y / 560) * 100}%`
+                  : s.n === 4 && measured
+                    ? `${(measured.card4.y / 560) * 100}%`
+                    : s.card.top;
 
-              const xOffset = s.n === 3 ? -10 : s.n === 4 ? -155 : 0;
-              const yOffset = s.n === 3 ? 34 : s.n === 4 ? -155 : 0;
+              const { x: ox, y: oy } = getCardPixelOffsets(s.n);
 
               return (
                 <div
@@ -267,7 +357,7 @@ export function HealthPlanSection() {
                     zIndex: s.card.z,
                     // Initial state: step 1 visible, rest hidden & offset down
                     opacity: s.n === 1 ? 1 : 0,
-                    transform: `translateX(${xOffset}px) translateY(${s.n === 1 ? yOffset : 22 + yOffset}px)`,
+                    transform: `translateX(${ox}px) translateY(${s.n === 1 ? oy : 22 + oy}px)`,
                   }}
                 >
                   <div
@@ -286,8 +376,8 @@ export function HealthPlanSection() {
             })}
           </div>
 
-          <div className="absolute left-0 right-0 bottom-10 px-6 sm:px-10 text-center pointer-events-none">
-            <p className="mx-auto max-w-[80ch] text-[15px] leading-[1.9] text-[#DDD8D0]">
+          <div className="absolute left-0 right-0 bottom-5 z-30 px-6 sm:bottom-5 sm:px-10 lg:bottom-5 text-center pointer-events-none">
+            <p className="mx-auto max-w-[80ch] text-[15px] leading-[1.9] text-[#DDD8D0] drop-shadow-[0_2px_12px_rgba(6,40,36,0.75)]">
               This is not generic treatment. This is precision-guided recovery.
             </p>
             <div className="pointer-events-auto mt-4">
