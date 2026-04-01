@@ -85,9 +85,10 @@ export default function IVTherapyPage() {
   ];
 
   const serviceLinks = [
+    { label: "Metabolic Recovery Programs", href: "/services/metabolic-programs" },
     { label: "Advanced IV Drips", href: "/services/iv-therapy" },
     { label: "Nutraceuticals", href: "/services/nutraceuticals" },
-    { label: "Metabolic Recovery Programs", href: "/services/metabolic-programs" },
+    { label: "Adult Vaccination Programme", href: "/services/adult-vaccination" },
     { label: "About Us", href: "/about-doctor" },
   ];
 
@@ -229,8 +230,11 @@ export default function IVTherapyPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              <div className="relative flex min-h-[450px] flex-col justify-between overflow-hidden rounded-xl bg-[#1b3022] p-12 text-white md:col-span-2">
+            <div className="grid grid-cols-1 gap-8 [perspective:1400px] md:grid-cols-3">
+              <div className="group relative flex min-h-[450px] flex-col justify-between overflow-hidden rounded-xl bg-[#1b3022] p-12 text-white shadow-[0_28px_80px_-28px_rgba(6,27,14,0.65)] ring-1 ring-white/10 transition-all duration-500 [transform-style:preserve-3d] hover:shadow-[0_38px_100px_-24px_rgba(6,27,14,0.78)] hover:ring-[#e9c176]/35 hover:[transform:translateY(-10px)_rotateX(2deg)_rotateY(-2deg)] md:col-span-2">
+                <div className="pointer-events-none absolute -inset-20 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100">
+                  <div className="h-full w-full bg-[radial-gradient(circle_at_30%_20%,rgba(233,193,118,0.22),transparent_55%)]" />
+                </div>
                 <div className="pointer-events-none absolute right-0 top-0 h-full w-1/2 opacity-20">
                   <Image
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuAao5pErz_q9wdwqwAuAPCAgDjVDccNq1RaiMyASRgSUrOFyHsekNy2c2L-hKzZ1cxjU15uxSPZoo-UQrsgASD_lsF5FMRFff29xEIQiUhxF7Gcicvv9wplbHpM4mEgNTahsjM5Djufnl5YSFaY08TWsFNbBIVjj7eWbXoHNXT10lZF5m5Rmnme1GLH__eTnDWcnKwwIlzjXb_UKgRRUu7ftPoHxPuQXk9SNEohO0f3r3e5t_rmCu3FNcr8ktF2Y5TtwsYPUf5ROhiF"
@@ -277,10 +281,13 @@ export default function IVTherapyPage() {
                 return (
                   <div
                     key={card.title}
-                    className={`group flex flex-col justify-between rounded-xl p-10 transition-all hover:shadow-xl ${idx === 1 ? "bg-[#f1f4f2]" : "border border-[#c3c8c1]/30 bg-white"}`}
+                    className={`group relative flex flex-col justify-between overflow-hidden rounded-xl p-10 ring-1 transition-all duration-500 [transform-style:preserve-3d] hover:shadow-[0_28px_80px_-30px_rgba(6,27,14,0.45)] hover:[transform:translateY(-10px)_rotateX(2deg)_rotateY(-2deg)] ${idx === 1 ? "bg-[#f1f4f2] ring-[#c3c8c1]/30" : "border border-[#c3c8c1]/30 bg-white ring-[#c3c8c1]/20"}`}
                   >
+                    <div className="pointer-events-none absolute -inset-16 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100">
+                      <div className="h-full w-full bg-[radial-gradient(circle_at_15%_15%,rgba(233,193,118,0.26),transparent_55%)]" />
+                    </div>
                     <div className="space-y-6">
-                      <Icon className="h-10 w-10 text-[#061b0e] transition-colors group-hover:text-[#e9c176]" />
+                      <Icon className="h-10 w-10 text-[#061b0e] transition-all duration-500 group-hover:scale-110 group-hover:text-[#e9c176]" />
                       <h3 className="font-[var(--font-display)] text-2xl">{card.title}</h3>
                       <p className="text-sm leading-relaxed text-[#434843]">{card.desc}</p>
                       <div className="space-y-2 pt-4">

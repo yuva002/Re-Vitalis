@@ -47,8 +47,8 @@ export const Footer = ({
     "AS Rao Nagar",
     "Jublee Hills",
     "Dubai, UAE",
-    "ABUDABI",
-    "Malasia",
+    "Abu Dhabi",
+    "Malaysia",
   ];
 
   return (

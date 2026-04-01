@@ -139,7 +139,7 @@ export default function PricingCards() {
                 "ring-1 ring-inset ring-neutral-900/10",
               ].join(" ")}
             >
-              Book a call
+              Enroll now
               <Calendar className="w-5 h-5 text-neutral-300" />
             </button>
           </div>
@@ -212,7 +212,7 @@ export default function PricingCards() {
                 "ring-1 ring-inset ring-white/30",
               ].join(" ")}
             >
-              Book a call
+              Enroll now
               <Calendar className="w-5 h-5 text-neutral-600" />
             </button>
           </div>

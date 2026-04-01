@@ -281,7 +281,7 @@ export default function ProgramsPage() {
                 href="#contacts"
                 className="btn-premium btn-premium-dark inline-flex w-full items-center justify-center px-8 py-3 text-[11px] md:w-auto"
               >
-                Book Consultation
+                  Start Recovery Program
               </Link>
               <a
                 href="https://wa.me/919000179178"
@@ -322,9 +322,10 @@ export default function ProgramsPage() {
           {
             heading: "Services",
             links: [
+              { label: "Metabolic Recovery Programs", href: "/services/metabolic-programs" },
               { label: "Advanced IV Drips", href: "/services/iv-therapy" },
               { label: "Nutraceuticals", href: "/services/nutraceuticals" },
-              { label: "Metabolic Recovery Programs", href: "/services/metabolic-programs" },
+              { label: "Adult Vaccination Programme", href: "/services/adult-vaccination" },
               { label: "About Us", href: "/about-doctor" },
             ],
           },

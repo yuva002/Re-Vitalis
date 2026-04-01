@@ -43,10 +43,10 @@ export function NavBar() {
             />
             <span className="inline-flex flex-col lg:flex">
               <span className="block text-[11px] sm:text-[13px] font-[600] tracking-[0.18em] text-ink leading-none">
-                RE-VITALIS
+                Re-Vitalis
               </span>
               <span className="mt-0.5 hidden sm:block text-[9px] sm:text-[10px] tracking-[0.1em] text-slate/80">
-                wellness
+                Metabolic Health center
               </span>
             </span>
           </Link>

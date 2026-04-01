@@ -193,9 +193,10 @@ export default function BlogPage() {
             {
               heading: "Services",
               links: [
+                { label: "Metabolic Recovery Programs", href: "/services/metabolic-programs" },
                 { label: "Advanced IV Drips", href: "/services/iv-therapy" },
                 { label: "Nutraceuticals", href: "/services/nutraceuticals" },
-                { label: "Metabolic Recovery Programs", href: "/services/metabolic-programs" },
+                { label: "Adult Vaccination Programme", href: "/services/adult-vaccination" },
                 { label: "About Us", href: "/about-doctor" },
               ],
             },

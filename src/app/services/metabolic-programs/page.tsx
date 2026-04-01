@@ -74,9 +74,10 @@ export default function MetabolicProgramsPage() {
   ];
 
   const serviceLinks = [
+    { label: "Metabolic Recovery Programs", href: "/services/metabolic-programs" },
     { label: "Advanced IV Drips", href: "/services/iv-therapy" },
     { label: "Nutraceuticals", href: "/services/nutraceuticals" },
-    { label: "Metabolic Recovery Programs", href: "/services/metabolic-programs" },
+    { label: "Adult Vaccination Programme", href: "/services/adult-vaccination" },
     { label: "About Us", href: "/about-doctor" },
   ];
 
@@ -310,7 +311,7 @@ export default function MetabolicProgramsPage() {
               <div className="flex flex-wrap justify-center gap-6">
                 <button className="btn-premium btn-premium-primary flex items-center gap-2 px-8 py-3 text-[11px]">
                   <CalendarDays className="h-4 w-4" />
-                  Book Consultation
+                  Start Recovery Program
                 </button>
                 <button className="btn-premium btn-premium-ghost flex items-center gap-2 px-8 py-3 text-[11px] text-white">
                   <MessageCircle className="h-4 w-4" />

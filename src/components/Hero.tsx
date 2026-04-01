@@ -145,7 +145,7 @@ export function Hero() {
                       transition={{ type: "spring", stiffness: 420, damping: 30 }}
                       className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#E2C98A] to-[#C8A96E] px-5 py-3 text-[11px] sm:text-[12px] tracking-[0.12em] text-[#1a0f00] font-[650] shadow-[0_14px_40px_rgba(200,169,110,0.28)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C8A96E]/50 min-h-11 sm:min-h-12"
                     >
-                      BOOK A CONSULTATION
+                      START RECOVERY PROGRAM
                     </motion.a>
                     <motion.a
                       href="/programs"

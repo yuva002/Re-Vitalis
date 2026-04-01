@@ -28,9 +28,31 @@ const GoldCheckIcon = ({ className = "" }: { className?: string }) => (
 )
 
 // ── Feature lists ─────────────────────────────────────────────────────────────
-const classicFeatures  = ["3 IV Sessions", "1 Free Consult", "10% Off Add-Ons", "Email Support"]
-const eliteFeatures    = ["6 IV Sessions", "1 GlowFusion Free", "Priority Scheduling", "10% Off Add-Ons", "Personalized Follow-Up"]
-const platinumFeatures = ["12 IV Sessions", "2 Signature Sessions Free", "Full Lab Profile", "VIP Access", "15% Off Add-Ons", "Birthday Drip Free"]
+const classicFeatures  = [
+  "Advanced Bio markers",
+  "1 free Doctors Consultation",
+  "4 IV Sessions",
+  "Monitoring & follow up",
+  "Email Support",
+  "Diet Plan",
+]
+const eliteFeatures    = [
+  "Everything included in the classic care",
+  "6 IV Sessions",
+  "1 GlowFusion Free",
+  "Priority Scheduling",
+  "10% Off Add-Ons",
+  "Personalized Follow-Up",
+]
+const platinumFeatures = [
+  "Everything included in the elite care",
+  "12 IV Sessions",
+  "2 Signature Sessions Free",
+  "Full Lab Profile",
+  "VIP Access",
+  "15% Off Add-Ons",
+  "Birthday Drip Free",
+]
 
 type PricingVariant = "default" | "jewel"
 
@@ -104,7 +126,7 @@ export default function PricingCards({ variant = "default" }: { variant?: Pricin
                 "shadow-[0_4px_18px_-6px_rgba(0,0,0,0.4)]",
                 "ring-1 ring-inset ring-neutral-900/10",
               ].join(" ")}>
-              Book a call
+              Enroll now
               <Calendar className="w-4 h-4 text-neutral-300" />
             </Link>
           </div>
@@ -178,7 +200,7 @@ export default function PricingCards({ variant = "default" }: { variant?: Pricin
                 "shadow-[0_4px_18px_-6px_rgba(255,255,255,0.35)]",
                 "ring-1 ring-inset ring-white/30",
               ].join(" ")}>
-              Book a call
+              Enroll now
               <Calendar className="w-4 h-4 text-neutral-600" />
             </Link>
           </div>
@@ -255,7 +277,7 @@ export default function PricingCards({ variant = "default" }: { variant?: Pricin
                 "shadow-[0_4px_18px_-6px_rgba(180,140,40,0.5)]",
                 "ring-1 ring-inset ring-[#e8d5aa]/30",
               ].join(" ")}>
-              Book a call
+              Enroll now
               <Calendar className="w-4 h-4 text-white/80" />
             </Link>
           </div>
