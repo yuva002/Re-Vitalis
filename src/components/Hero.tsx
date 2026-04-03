@@ -62,7 +62,7 @@ export function Hero() {
           <div className="mx-auto w-full max-w-[1480px] px-4 sm:px-6">
             <div className="text-center -translate-x-[2vw] sm:-translate-x-[5.89vw] lg:-translate-x-[13vw]">
               <div
-                className="font-[550] uppercase tracking-[0.02em] text-[#F0ECE4]/28"
+                className="font-[550] uppercase tracking-[0.02em] text-[#EDE9E0]/52"
                 style={{
                   fontFamily: "var(--font-display), ui-serif, Georgia, serif",
                   fontSize: "clamp(56px, 10.4vw, 220px)",
@@ -91,7 +91,7 @@ export function Hero() {
         {/* Character anchored to viewport edge (slightly cropped) */}
         <motion.div
           style={{ x: charX, y: charY }}
-          className="pointer-events-none absolute right-[-220px] top-[-150px] z-10 h-[480px] w-[580px] sm:right-[-110px] sm:top-[-56px] sm:h-[620px] sm:w-[780px] lg:right-[-250px] lg:top-[-100px] lg:h-[820px] lg:w-[1100px]"
+          className="pointer-events-none absolute right-[-195px] top-[-150px] z-10 h-[480px] w-[580px] sm:right-[-85px] sm:top-[-56px] sm:h-[620px] sm:w-[780px] lg:right-[-185px] lg:top-[-100px] lg:h-[820px] lg:w-[1100px]"
         >
           <Image
             src={heroImg}
@@ -109,13 +109,13 @@ export function Hero() {
               {/* Spacer keeps layout stable under the absolute character */}
             </div>
 
-            {/* Lower glass content panel (wide, within the hero) */}
-            <div className="relative z-30 mt-12 sm:mt-16 lg:mt-20">
+            {/* Lower glass content panel — full width of hero track */}
+            <div className="relative z-30 mt-10 sm:mt-14 lg:mt-16 w-full">
               <motion.div
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="relative overflow-hidden rounded-2xl sm:rounded-[30px] border border-[#C8A96E]/22 bg-[#0f4842]/22 backdrop-blur-xl shadow-[0_30px_90px_rgba(0,0,0,0.30)]"
+                className="relative w-full overflow-hidden rounded-xl border border-[#C8A96E]/25 bg-[#0f4842]/20 backdrop-blur-xl shadow-[0_18px_56px_-8px_rgba(0,0,0,0.28)] sm:rounded-2xl"
               >
               {/* Glass sheen + depth */}
               <div className="pointer-events-none absolute inset-0">
@@ -130,34 +130,34 @@ export function Hero() {
                 <div className="absolute left-24 top-40 h-[560px] w-[560px] rounded-full border border-[#C8A96E]/10" />
               </div>
 
-              <div className="relative grid gap-6 px-5 py-8 sm:gap-9 sm:px-9 sm:py-12 md:grid-cols-[1fr_1fr] md:gap-12 md:px-12">
-                <div className="max-w-[720px]">
+              <div className="relative grid w-full gap-5 px-5 py-6 sm:gap-6 sm:px-6 sm:py-7 md:grid-cols-2 md:gap-8 md:px-8 md:py-8 lg:gap-10 lg:px-10">
+                <div className="min-w-0">
                   <h1
-                    className="text-[28px] sm:text-[38px] lg:text-[48px] font-[560] leading-[1.07] tracking-[-0.03em] text-[#F0ECE4]"
+                    className="text-[26px] sm:text-[32px] lg:text-[40px] font-[520] leading-[1.08] tracking-[-0.035em] text-[#F0ECE4]"
                     style={{ fontFamily: "var(--font-display), ui-serif, serif" }}
                   >
                     Restore Your Metabolism. Reclaim Your Vitality
                   </h1>
-                  <p className="mt-4 sm:mt-5 text-[14px] sm:text-[16px] leading-[1.9] text-[#C2BDB5]">
+                  <p className="mt-3 sm:mt-4 text-[13px] sm:text-[15px] font-light leading-[1.65] tracking-[0.01em] text-[#C2BDB5]/95">
                     Transform the way you feel, perform, and live.
                   </p>
 
-                  <div className="mt-5 sm:mt-7 flex flex-col sm:flex-row flex-wrap gap-3">
+                  <div className="mt-4 sm:mt-5 flex flex-col sm:flex-row flex-wrap gap-2.5">
                     <motion.a
                       href="/programs"
                       whileHover={{ y: -1 }}
                       whileTap={{ scale: 0.98 }}
                       transition={{ type: "spring", stiffness: 420, damping: 30 }}
-                      className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#E2C98A] to-[#C8A96E] px-5 py-3 text-[11px] sm:text-[12px] tracking-[0.12em] text-[#1a0f00] font-[650] shadow-[0_14px_40px_rgba(200,169,110,0.28)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C8A96E]/50 min-h-11 sm:min-h-12"
+                      className="inline-flex w-fit items-center justify-center rounded-full bg-gradient-to-r from-[#E2C98A] to-[#C8A96E] px-5 py-2.5 text-[10px] sm:text-[11px] tracking-[0.14em] text-[#1a0f00] font-[600] shadow-[0_10px_32px_rgba(200,169,110,0.22)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C8A96E]/50 min-h-10 sm:min-h-11"
                     >
                       EXPLORE OUR PROGRAMS
                     </motion.a>
                   </div>
                 </div>
 
-                <div className="max-w-[760px]">
-                  <div className="rounded-2xl sm:rounded-[22px] border border-[#C8A96E]/16 bg-[#0c4038]/25 px-5 py-5 sm:px-7 sm:py-7 backdrop-blur-md">
-                    <p className="text-[13px] sm:text-[14px] lg:text-[15px] leading-[1.85] text-[#C2BDB5]">
+                <div className="min-w-0 flex md:items-stretch">
+                  <div className="w-full rounded-xl border border-[#C8A96E]/18 bg-[#0c4038]/22 px-4 py-4 sm:px-6 sm:py-5 backdrop-blur-md sm:rounded-[14px] md:flex md:min-h-full md:flex-col md:justify-center">
+                    <p className="text-[12px] sm:text-[13px] lg:text-[14px] font-light leading-[1.72] tracking-[0.01em] text-[#C2BDB5]/95">
                       At Re-Vitalis Wellness, we go beyond conventional
                       healthcare. We combine medical science, advanced therapies,
                       and personalized care to help you restore energy, improve

@@ -187,37 +187,38 @@ body {
 */
 .home-jewel-surface {
   position: relative;
-  background-color: #134742;
+  /* Deeper premium jewel teal — same hue family, one step darker than prior */
+  background-color: #0b3532;
   background-image:
     /* subtle champagne bloom at the very top (hero) */
-    radial-gradient(ellipse 110% 55% at 50% 0%, rgba(245, 230, 195, 0.13), transparent 48%),
+    radial-gradient(ellipse 110% 55% at 50% 0%, rgba(245, 230, 195, 0.095), transparent 48%),
     /* soft aqua highlight right edge */
-    radial-gradient(ellipse 65% 38% at 92% 18%, rgba(130, 210, 195, 0.10), transparent 52%),
+    radial-gradient(ellipse 65% 38% at 92% 18%, rgba(130, 210, 195, 0.07), transparent 52%),
     /* warm left-edge depth */
-    radial-gradient(ellipse 60% 42% at 8% 72%, rgba(200, 169, 110, 0.07), transparent 50%),
+    radial-gradient(ellipse 60% 42% at 8% 72%, rgba(200, 169, 110, 0.055), transparent 50%),
     /* bottom-left shadow anchor */
-    radial-gradient(ellipse 80% 40% at 20% 100%, rgba(6, 24, 22, 0.30), transparent 55%),
+    radial-gradient(ellipse 80% 40% at 20% 100%, rgba(6, 24, 22, 0.38), transparent 55%),
     /* diagonal sheen */
     linear-gradient(
       210deg,
-      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.032) 0%,
       transparent 32%,
       transparent 65%,
-      rgba(0, 16, 14, 0.12) 100%
+      rgba(0, 16, 14, 0.16) 100%
     ),
     /* main vertical colour ramp: light at top (hero) → dark at bottom */
     linear-gradient(
       180deg,
-      #2a7d75 0%,
-      #26736c 8%,
-      #226963 18%,
-      #1e5f5a 32%,
-      #1a5a54 46%,
-      #175550 58%,
-      #134d48 70%,
-      #114542 82%,
-      #0e3e3a 92%,
-      #0c3836 100%
+      #1f5d58 0%,
+      #1d5a55 8%,
+      #19544f 18%,
+      #164a46 32%,
+      #13453f 46%,
+      #11403a 58%,
+      #0e3934 70%,
+      #0c312d 82%,
+      #092a26 92%,
+      #07231f 100%
     );
 }
 

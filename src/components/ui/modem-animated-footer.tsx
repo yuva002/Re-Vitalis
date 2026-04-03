@@ -36,7 +36,7 @@ export const Footer = ({
   className,
 }: FooterProps) => {
   // Deep burgundy footer — user-specified base tint
-  const BG = "rgba(48, 3, 3, 0.92)"
+  const BG = "rgba(39, 4, 4, 0.81)"
   const FG = "#f7f2ea" // warm ivory
   const MUTED = "#c9bba8" // readable taupe on maroon
   const HEADING = "#e0d0b0" // champagne gold for headings
