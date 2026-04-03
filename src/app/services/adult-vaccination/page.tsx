@@ -15,10 +15,10 @@ import {
   Shield,
   Syringe,
   Verified,
+  Mail,
 } from "lucide-react";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/ui/modem-animated-footer";
-import needleHero from "../../../../public/needle.jpg";
 
 const vaccinationSchema = {
   "@context": "https://schema.org",
@@ -104,7 +104,6 @@ export default function AdultVaccinationPage() {
     { label: "Advanced IV Drips", href: "/services/iv-therapy" },
     { label: "Nutraceuticals", href: "/services/nutraceuticals" },
     { label: "Adult Vaccination Programme", href: "/services/adult-vaccination" },
-    { label: "About Us", href: "/about-doctor" },
   ];
 
   const contactItems = [
@@ -112,6 +111,11 @@ export default function AdultVaccinationPage() {
       icon: <Globe className="h-4 w-4" />,
       label: "www.re-vitalis.in",
       href: "https://www.re-vitalis.in",
+    },
+    {
+      icon: <Mail className="h-4 w-4" />,
+      label: "info@re-vitalis.in",
+      href: "mailto:info@re-vitalis.in",
     },
     {
       icon: <Phone className="h-4 w-4" />,
@@ -179,8 +183,10 @@ export default function AdultVaccinationPage() {
             <div className="relative w-full min-w-0">
               <div className="relative w-full overflow-hidden rounded-xl shadow-2xl">
                 <Image
-                  src={needleHero}
-                  alt="Gloved hand holding a medical syringe for vaccination"
+                  src="/vac-img.png"
+                  alt="Clinician preparing a vaccine for an adult patient in a supervised care setting"
+                  width={1200}
+                  height={800}
                   className="h-auto w-full object-cover object-center transition-transform duration-700 hover:scale-[1.03]"
                   sizes="(min-width: 1024px) min(50vw, 640px), 100vw"
                   priority

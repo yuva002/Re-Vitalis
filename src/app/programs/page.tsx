@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, LineChart, Droplets, Pill, Syringe, Database, Dna, UserRound, Network, MessageCircle, Globe, Phone } from "lucide-react";
+import { ArrowRight, LineChart, Droplets, Pill, Syringe, Database, Dna, UserRound, Network, MessageCircle, Globe, Phone, Mail } from "lucide-react";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/ui/modem-animated-footer";
 import { FAQSection } from "@/components/FAQSection";
@@ -326,12 +326,12 @@ export default function ProgramsPage() {
               { label: "Advanced IV Drips", href: "/services/iv-therapy" },
               { label: "Nutraceuticals", href: "/services/nutraceuticals" },
               { label: "Adult Vaccination Programme", href: "/services/adult-vaccination" },
-              { label: "About Us", href: "/about-doctor" },
             ],
           },
         ]}
         contactItems={[
           { icon: <Globe className="w-4 h-4" />, label: "www.re-vitalis.in", href: "https://www.re-vitalis.in" },
+          { icon: <Mail className="w-4 h-4" />, label: "info@re-vitalis.in", href: "mailto:info@re-vitalis.in" },
           { icon: <Phone className="w-4 h-4" />, label: "9000179178", href: "tel:9000179178" },
           { icon: <MessageCircle className="w-4 h-4" />, label: "WhatsApp: 9000179178", href: "https://wa.me/919000179178" },
         ]}

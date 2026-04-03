@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CalendarDays, MessageCircle, ChevronRight, RefreshCw, Bolt, ChartLine, Phone, Globe } from "lucide-react";
+import { CalendarDays, MessageCircle, ChevronRight, RefreshCw, Bolt, ChartLine, Phone, Globe, Mail } from "lucide-react";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/ui/modem-animated-footer";
 import { FAQSection } from "@/components/FAQSection";
@@ -78,7 +78,6 @@ export default function MetabolicProgramsPage() {
     { label: "Advanced IV Drips", href: "/services/iv-therapy" },
     { label: "Nutraceuticals", href: "/services/nutraceuticals" },
     { label: "Adult Vaccination Programme", href: "/services/adult-vaccination" },
-    { label: "About Us", href: "/about-doctor" },
   ];
 
   const contactItems = [
@@ -86,6 +85,11 @@ export default function MetabolicProgramsPage() {
       icon: <Globe className="w-4 h-4" />,
       label: "www.re-vitalis.in",
       href: "https://www.re-vitalis.in",
+    },
+    {
+      icon: <Mail className="w-4 h-4" />,
+      label: "info@re-vitalis.in",
+      href: "mailto:info@re-vitalis.in",
     },
     {
       icon: <Phone className="w-4 h-4" />,

@@ -6,6 +6,7 @@ import { NavBar } from "@/components/NavBar";
 import { BlogCard } from "@/components/BlogCard";
 import { blogPosts, categories, getBlogCardImageSrc, getPostsByCategory } from "@/lib/blogData";
 import { motion } from "motion/react";
+import { Mail } from "lucide-react";
 
 const FAQSection = dynamic(() =>
   import("@/components/FAQSection").then((m) => ({ default: m.FAQSection }))
@@ -197,7 +198,6 @@ export default function BlogPage() {
                 { label: "Advanced IV Drips", href: "/services/iv-therapy" },
                 { label: "Nutraceuticals", href: "/services/nutraceuticals" },
                 { label: "Adult Vaccination Programme", href: "/services/adult-vaccination" },
-                { label: "About Us", href: "/about-doctor" },
               ],
             },
           ]}
@@ -210,6 +210,11 @@ export default function BlogPage() {
               ),
               label: "www.re-vitalis.in",
               href: "https://www.re-vitalis.in",
+            },
+            {
+              icon: <Mail className="h-4 w-4" />,
+              label: "info@re-vitalis.in",
+              href: "mailto:info@re-vitalis.in",
             },
             {
               icon: (

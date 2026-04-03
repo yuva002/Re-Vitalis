@@ -39,10 +39,15 @@ export function Hero() {
       onPointerMove={onMove}
       onPointerLeave={onLeave}
     >
-      {/* Light text on dark jewel hero — NavBar uses `text-ink` / `text-slate` from :root */}
+      {/* NavBar sits on frosted glass: use dark ink/slate for contrast. Rest of hero keeps jewel palette below. */}
       <div
         className="relative z-50"
-        style={{ ["--ink" as string]: "#F0ECE4", ["--slate" as string]: "#C2BDB5" } as React.CSSProperties}
+        style={
+          {
+            ["--ink" as string]: "#061b0e",
+            ["--slate" as string]: "#3d4a42",
+          } as React.CSSProperties
+        }
       >
         <NavBar />
       </div>
@@ -86,7 +91,7 @@ export function Hero() {
         {/* Character anchored to viewport edge (slightly cropped) */}
         <motion.div
           style={{ x: charX, y: charY }}
-          className="pointer-events-none absolute right-[-220px] top-[-40px] z-10 h-[480px] w-[580px] sm:right-[-110px] sm:top-[0px] sm:h-[620px] sm:w-[780px] lg:right-[-200px] lg:top-[-16px] lg:h-[820px] lg:w-[1100px]"
+          className="pointer-events-none absolute right-[-220px] top-[-150px] z-10 h-[480px] w-[580px] sm:right-[-110px] sm:top-[-56px] sm:h-[620px] sm:w-[780px] lg:right-[-250px] lg:top-[-100px] lg:h-[820px] lg:w-[1100px]"
         >
           <Image
             src={heroImg}
@@ -131,7 +136,7 @@ export function Hero() {
                     className="text-[28px] sm:text-[38px] lg:text-[48px] font-[560] leading-[1.07] tracking-[-0.03em] text-[#F0ECE4]"
                     style={{ fontFamily: "var(--font-display), ui-serif, serif" }}
                   >
-                    Elevate Your Wellbeing. Restore Your Vitality.
+                    Restore Your Metabolism. Reclaim Your Vitality
                   </h1>
                   <p className="mt-4 sm:mt-5 text-[14px] sm:text-[16px] leading-[1.9] text-[#C2BDB5]">
                     Transform the way you feel, perform, and live.
@@ -139,20 +144,11 @@ export function Hero() {
 
                   <div className="mt-5 sm:mt-7 flex flex-col sm:flex-row flex-wrap gap-3">
                     <motion.a
-                      href="#contacts"
-                      whileHover={{ y: -1 }}
-                      whileTap={{ scale: 0.98 }}
-                      transition={{ type: "spring", stiffness: 420, damping: 30 }}
-                      className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#E2C98A] to-[#C8A96E] px-5 py-3 text-[11px] sm:text-[12px] tracking-[0.12em] text-[#1a0f00] font-[650] shadow-[0_14px_40px_rgba(200,169,110,0.28)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C8A96E]/50 min-h-11 sm:min-h-12"
-                    >
-                      START RECOVERY PROGRAM
-                    </motion.a>
-                    <motion.a
                       href="/programs"
                       whileHover={{ y: -1 }}
                       whileTap={{ scale: 0.98 }}
                       transition={{ type: "spring", stiffness: 420, damping: 30 }}
-                      className="inline-flex items-center justify-center rounded-full border border-[#F0ECE4]/30 bg-[#F0ECE4]/08 px-5 py-3 text-[11px] sm:text-[12px] tracking-[0.12em] text-[#F0ECE4] backdrop-blur-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C8A96E]/40 min-h-11 sm:min-h-12"
+                      className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#E2C98A] to-[#C8A96E] px-5 py-3 text-[11px] sm:text-[12px] tracking-[0.12em] text-[#1a0f00] font-[650] shadow-[0_14px_40px_rgba(200,169,110,0.28)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C8A96E]/50 min-h-11 sm:min-h-12"
                     >
                       EXPLORE OUR PROGRAMS
                     </motion.a>

@@ -79,17 +79,18 @@ export default function PricingCards({ variant = "default" }: { variant?: Pricin
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 w-full max-w-[1100px] mx-auto">
 
         {/* ════════════════════════════════
-            CLASSIC CARE  ·  LIGHT GLASS
+            CLASSIC CARE  ·  PREMIUM SILVER
         ════════════════════════════════ */}
         <div
           onMouseEnter={() => setHoveredCard("classic")}
           onMouseLeave={() => setHoveredCard(null)}
           className={[
             "rounded-3xl p-2 flex flex-col transition-transform duration-300",
-            "bg-white/65 backdrop-blur-md",
-            "border border-neutral-200/70",
-            "shadow-[0_12px_40px_-15px_rgba(0,0,0,0.12)]",
-            "ring-1 ring-inset ring-white/40",
+            // Brushed silver shell — mid slate / pewter (reads clearly as silver, not white)
+            "bg-[linear-gradient(145deg,#c2cad3_0%,#9eaab8_42%,#7d8a9a_100%)]",
+            "border border-[#5c6775]/55",
+            "shadow-[0_16px_48px_-12px_rgba(15,23,42,0.35),inset_0_1px_0_rgba(255,255,255,0.22)]",
+            "ring-1 ring-inset ring-slate-300/35",
             hoveredCard === "classic" ? "-translate-y-2" : "",
           ].join(" ")}
         >
@@ -97,23 +98,23 @@ export default function PricingCards({ variant = "default" }: { variant?: Pricin
           {/* Inner top */}
           <div className={[
             "rounded-2xl p-5 sm:p-6 lg:p-8 mb-2",
-            "bg-white/80 backdrop-blur-sm",
-            "border border-neutral-200/80",
-            "ring-1 ring-inset ring-neutral-900/5",
+            "bg-[linear-gradient(160deg,#d1d8e2_0%,#b3bcc8_55%,#9ca6b4_100%)]",
+            "border border-[#5c6775]/40",
+            "ring-1 ring-inset ring-white/12 shadow-[inset_0_2px_8px_rgba(255,255,255,0.12)]",
           ].join(" ")}>
             <div className="mb-4 sm:mb-5 flex items-start sm:items-center justify-between gap-3 flex-wrap">
               <div>
-                <h2 className="text-[22px] sm:text-2xl font-bold tracking-tight text-neutral-900">Classic Care</h2>
-                <p className="text-neutral-600 text-[13px] sm:text-sm leading-relaxed mt-1">3-month wellness foundation.</p>
+                <h2 className="text-[22px] sm:text-2xl font-bold tracking-tight text-[#1a1f26]">Classic Care</h2>
+                <p className="text-[#3d4654] text-[13px] sm:text-sm leading-relaxed mt-1">3-month wellness foundation.</p>
               </div>
-              <span className="inline-flex items-center rounded-full border border-neutral-200 bg-white/70 px-3 py-1 text-[11px] sm:text-xs font-semibold text-neutral-700 backdrop-blur">
+              <span className="inline-flex items-center rounded-full border border-[#5c6775]/45 bg-[#e2e7ee]/95 px-3 py-1 text-[11px] sm:text-xs font-semibold text-[#1f2933] shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]">
                 3 Months
               </span>
             </div>
 
             <div className="flex items-baseline mb-6 sm:mb-8">
-              <span className="text-[32px] sm:text-4xl font-bold tracking-tighter text-neutral-900">Entry</span>
-              <span className="text-neutral-400 text-[14px] sm:text-base ml-2">/ membership</span>
+              <span className="text-[32px] sm:text-4xl font-bold tracking-tighter text-[#1a1f26]">Entry</span>
+              <span className="text-[#5c6370] text-[14px] sm:text-base ml-2">/ membership</span>
             </div>
 
             <Link
@@ -134,18 +135,18 @@ export default function PricingCards({ variant = "default" }: { variant?: Pricin
           {/* Features */}
           <div className={[
             "flex-1 px-5 pb-5 pt-4 sm:px-6 sm:pb-6",
-            "bg-white/50 backdrop-blur-sm rounded-2xl",
-            "border border-neutral-200/70",
-            "ring-1 ring-inset ring-white/30",
+            "bg-[linear-gradient(180deg,#b8c2ce_0%,#9aa6b5_50%,#8895a6_100%)] rounded-2xl",
+            "border border-[#5c6775]/45",
+            "ring-1 ring-inset ring-white/10 shadow-[inset_0_2px_12px_rgba(0,0,0,0.08)]",
           ].join(" ")}>
-            <p className="text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase text-neutral-400 mb-3 sm:mb-4">
+            <p className="text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase text-[#4a5568] mb-3 sm:mb-4">
               Included
             </p>
             <div className="flex flex-col gap-2.5 sm:gap-3">
               {classicFeatures.map((f) => (
                 <div key={f} className="flex items-center gap-3">
                   <LightCheckIcon className="w-4 h-4 flex-shrink-0" />
-                  <span className="text-neutral-700 text-[13px] sm:text-sm font-medium">{f}</span>
+                  <span className="text-[#1a1f26] text-[13px] sm:text-sm font-medium">{f}</span>
                 </div>
               ))}
             </div>

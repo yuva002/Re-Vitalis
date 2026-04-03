@@ -6,6 +6,7 @@ import { Footer } from "@/components/ui/modem-animated-footer"
 import { NavBar } from "@/components/NavBar"
 import {
   Globe,
+  Mail,
   MessageCircle,
   Phone,
   ArrowRight,
@@ -72,6 +73,11 @@ export default function CareersPage() {
       icon: <Globe className="w-4 h-4" />,
       label: "www.re-vitalis.in",
       href: "https://www.re-vitalis.in",
+    },
+    {
+      icon: <Mail className="w-4 h-4" />,
+      label: "info@re-vitalis.in",
+      href: "mailto:info@re-vitalis.in",
     },
     {
       icon: <Phone className="w-4 h-4" />,

@@ -33,26 +33,36 @@ export function NavBar() {
             aria-label="Re-Vitalis home"
             className="group inline-flex shrink-0 items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 lg:absolute lg:left-3 lg:top-1/2 lg:-translate-y-1/2"
           >
-            <Image
-              src="/Re-Vitalis Logo.png"
-              alt="Re-Vitalis"
-              width={120}
-              height={120}
-              className="h-14 w-14 sm:h-20 sm:w-20 lg:h-24 lg:w-24 object-contain drop-shadow-[0_2px_16px_rgba(200,160,40,0.65)] transition-transform duration-300 group-hover:scale-110"
-              priority
-            />
+            <span className="relative inline-flex shrink-0 rounded-full">
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -inset-3 rounded-full opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
+                style={{
+                  background:
+                    "radial-gradient(circle at 50% 50%, rgba(255, 220, 160, 0.5) 0%, rgba(200, 169, 110, 0.2) 50%, transparent 72%)",
+                }}
+              />
+              <Image
+                src="/Re-Vitalis Logo.png"
+                alt="Re-Vitalis"
+                width={120}
+                height={120}
+                className="relative z-10 h-14 w-14 sm:h-20 sm:w-20 lg:h-24 lg:w-24 object-contain drop-shadow-[0_2px_16px_rgba(200,160,40,0.65)] transition-[transform,filter] duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_28px_rgba(200,169,110,0.9)]"
+                priority
+              />
+            </span>
             <span className="inline-flex flex-col lg:flex">
               <span className="block text-[11px] sm:text-[13px] font-[600] tracking-[0.18em] text-ink leading-none">
                 Re-Vitalis
               </span>
-              <span className="mt-0.5 hidden sm:block text-[9px] sm:text-[10px] tracking-[0.1em] text-slate/80">
+              <span className="mt-0.5 hidden sm:block text-[9px] sm:text-[10px] tracking-[0.1em] text-slate">
                 Metabolic Health center
               </span>
             </span>
           </Link>
 
           {/* Desktop navigation */}
-          <nav className="hidden lg:flex flex-1 justify-end items-center gap-6 mr-10 text-[14px] tracking-[0.08em] text-ink/75">
+          <nav className="hidden lg:flex flex-1 justify-end items-center gap-6 mr-10 text-[14px] font-medium tracking-[0.08em] text-ink/90">
             {nav.map((item) => (
               <Link
                 key={item.href}
@@ -71,7 +81,7 @@ export function NavBar() {
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden min-h-11 min-w-11 flex items-center justify-center rounded-full border border-border/50 bg-white/20 text-ink/75 transition-all hover:bg-white/30 hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/30"
+              className="lg:hidden min-h-11 min-w-11 flex items-center justify-center rounded-full border border-border/50 bg-white/20 text-ink/90 transition-all hover:bg-white/30 hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/30"
               aria-expanded={isOpen}
               aria-controls="mobile-nav"
               aria-label="Toggle navigation menu"

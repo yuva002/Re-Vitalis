@@ -35,17 +35,17 @@ export const Footer = ({
   contactItems = [],
   className,
 }: FooterProps) => {
-  // Premium colour tokens for the dark footer
-  const BG       = "#0c0b09"          // near-black with a warm undertone
-  const FG       = "#f5f0e8"          // warm ivory – premium off-white
-  const MUTED    = "#9a9080"          // warm taupe for secondary text
-  const HEADING  = "#c8b89a"          // gold-mist for column headings
-  const DIVIDER  = "rgba(200,184,154,0.18)"  // subtle gold-tinted divider
+  // Deep burgundy footer — user-specified base tint
+  const BG = "rgba(48, 3, 3, 0.92)"
+  const FG = "#f7f2ea" // warm ivory
+  const MUTED = "#c9bba8" // readable taupe on maroon
+  const HEADING = "#e0d0b0" // champagne gold for headings
+  const DIVIDER = "rgba(224, 208, 176, 0.28)"
 
   // Always shown across the site (requested by you).
   const branches = [
-    "AS Rao Nagar",
-    "Jublee Hills",
+    "AS Rao Nagar - India",
+    "Jublee Hills - India",
     "Dubai, UAE",
     "Abu Dhabi",
     "Malaysia",
@@ -55,8 +55,11 @@ export const Footer = ({
     <section className={cn("relative w-full mt-0 overflow-hidden", className)}>
       <footer
         id="contacts"
-        className="relative mt-20 scroll-mt-24"
-        style={{ background: BG, borderTop: `1px solid ${DIVIDER}` }}
+        className="relative mt-20 scroll-mt-24 shadow-[inset_0_1px_0_rgba(255,248,240,0.07)]"
+        style={{
+          background: BG,
+          borderTop: `1px solid ${DIVIDER}`,
+        }}
       >
         <div className="max-w-7xl flex flex-col justify-between mx-auto min-h-[35rem] sm:min-h-[39rem] md:min-h-[46.5rem] relative p-4 py-8 sm:py-10">
 
@@ -163,7 +166,7 @@ export const Footer = ({
           style={{
             fontSize: "clamp(3rem, 12vw, 10rem)",
             maxWidth: "95vw",
-            background: `linear-gradient(to bottom, rgba(200,184,154,0.18), rgba(200,184,154,0.06), transparent)`,
+            background: `linear-gradient(to bottom, rgba(240, 224, 200, 0.22), rgba(200, 170, 140, 0.08), transparent)`,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -173,7 +176,7 @@ export const Footer = ({
         </div>
 
         {/* Bottom logo — floating, no background box, very large */}
-        <div className="absolute -bottom-12 sm:-bottom-16 md:-bottom-24 left-1/2 -translate-x-1/2 z-10 drop-shadow-[0_0px_48px_rgba(200,184,154,0.65)] hover:scale-105 transition-transform duration-300">
+        <div className="absolute -bottom-12 sm:-bottom-16 md:-bottom-24 left-1/2 -translate-x-1/2 z-10 drop-shadow-[0_0_40px_rgba(240,220,190,0.45)] hover:scale-105 transition-transform duration-300">
           <Image
             src="/Re-Vitalis Logo.png"
             alt="Re-Vitalis Logo"
@@ -193,8 +196,9 @@ export const Footer = ({
         {/* Bottom shadow fade */}
         <div
           className="absolute bottom-24 sm:bottom-28 w-full h-24 sm:h-28 blur-[1em]"
-          // Keep the footer background opaque so underlying page color doesn't "show through".
-          style={{ background: `linear-gradient(to top, ${BG}, ${BG}cc, ${BG}aa)` }}
+          style={{
+            background: `linear-gradient(to top, ${BG}, rgba(55, 4, 4, 0.55), transparent)`,
+          }}
         />
       </footer>
     </section>

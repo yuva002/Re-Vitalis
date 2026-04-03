@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/Hero";
-import { Phone, Globe, MessageCircle } from "lucide-react";
+import { Phone, Globe, MessageCircle, Mail } from "lucide-react";
 
 // Below-fold sections: dynamically imported with loading placeholder
 const AboutSection = dynamic(
@@ -111,7 +111,6 @@ export default function Home() {
     { label: "Advanced IV Drips", href: "/services/iv-therapy" },
     { label: "Nutraceuticals", href: "/services/nutraceuticals" },
     { label: "Adult Vaccination Programme", href: "/services/adult-vaccination" },
-    { label: "About Us", href: "/about-doctor" },
   ];
 
   const contactItems = [
@@ -119,6 +118,11 @@ export default function Home() {
       icon: <Globe className="w-4 h-4" />,
       label: "www.re-vitalis.in",
       href: "https://www.re-vitalis.in",
+    },
+    {
+      icon: <Mail className="w-4 h-4" />,
+      label: "info@re-vitalis.in",
+      href: "mailto:info@re-vitalis.in",
     },
     {
       icon: <Phone className="w-4 h-4" />,
